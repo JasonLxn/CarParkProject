@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.carpark.mapper.ParkchangeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neu.carpark.entity.Parkchange">
+        <id column="parc_id" property="parcId" />
+        <result column="parc_bstate" property="parcBstate" />
+        <result column="parc_astate" property="parcAstate" />
+        <result column="parc_time" property="parcTime" />
+        <result column="parc_reason" property="parcReason" />
+        <result column="parc_operid" property="parcOperid" />
+        <result column="parc_parkid" property="parcParkid" />
+    </resultMap>
+
+</mapper>

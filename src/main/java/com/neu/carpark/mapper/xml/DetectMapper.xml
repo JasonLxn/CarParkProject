@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.carpark.mapper.DetectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neu.carpark.entity.Detect">
+        <id column="dete_id" property="deteId" />
+        <result column="dete_state" property="deteState" />
+        <result column="dete_creattime" property="deteCreattime" />
+        <result column="dete_endtime" property="deteEndtime" />
+        <result column="dete_febaid" property="deteFebaid" />
+        <result column="dete_operid" property="deteOperid" />
+    </resultMap>
+
+</mapper>

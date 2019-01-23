@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.carpark.mapper.FundsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neu.carpark.entity.Funds">
+        <id column="fund_id" property="fundId" />
+        <result column="fund_creattime" property="fundCreattime" />
+        <result column="fund_endtime" property="fundEndtime" />
+        <result column="fund_paytime" property="fundPaytime" />
+        <result column="fund_parktime" property="fundParktime" />
+        <result column="fund_state" property="fundState" />
+        <result column="fund_parkid" property="fundParkid" />
+        <result column="fund_userid" property="fundUserid" />
+    </resultMap>
+
+</mapper>

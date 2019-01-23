@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.carpark.mapper.FeedbackMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neu.carpark.entity.Feedback">
+        <id column="feba_id" property="febaId" />
+        <result column="feba_title" property="febaTitle" />
+        <result column="feba_meg" property="febaMeg" />
+        <result column="feba_usertime" property="febaUsertime" />
+        <result column="feba_state" property="febaState" />
+        <result column="feba_opertime" property="febaOpertime" />
+        <result column="feba_operid" property="febaOperid" />
+        <result column="feba_userid" property="febaUserid" />
+    </resultMap>
+
+</mapper>

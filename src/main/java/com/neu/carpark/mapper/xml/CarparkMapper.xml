@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.carpark.mapper.CarparkMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neu.carpark.entity.Carpark">
+        <id column="carp_id" property="carpId" />
+        <result column="carp_name" property="carpName" />
+        <result column="carp_area" property="carpArea" />
+        <result column="carp_type" property="carpType" />
+        <result column="carp_emoney" property="carpEmoney" />
+        <result column="carp_bhour" property="carpBhour" />
+        <result column="carp_bmoney" property="carpBmoney" />
+        <result column="carp_amoney" property="carpAmoney" />
+    </resultMap>
+
+</mapper>

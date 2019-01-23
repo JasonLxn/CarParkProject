@@ -1,0 +1,281 @@
+.navbar-header{
+	width: 52%;
+}
+.carred{
+	color: #e76f51;
+}
+
+.cargreen{
+	color: #2a9d8f;
+}
+
+.carorage{
+	color: #f4a261;
+}
+
+.carwhite{
+	color: #FFFFFF;
+}
+.cargray{
+	color: #999999;
+}
+
+.systemcolor{
+	background: #1AB394;
+}
+
+.mytool,.mychart,.mytable,.myinfo_left{
+	border-top: #e7eaec solid 3px;
+	background: #FFFFFF;
+	box-shadow: 3px 3px 3px #888888
+}
+.mychart,.mytable,.myinfo{
+	margin-top: 20px;
+	padding: 0;
+}
+.mt_time{
+	margin: 20px 20px 20px 0;
+	width: 10%;
+}
+.mt_state{
+	margin: 3px 20px 20px 0;
+	width: 10%;
+}
+.mt_timechoose{
+	margin: 22px 0;
+}
+.mt_statechoose{
+	margin: 5px 0 22px 0;
+}
+.mt_time span,.mt_state span{
+	font-size: 15px;
+	font-weight: 700;
+	color: #FFFFFF;
+	background: #2A9D8F;
+	border-radius: 4px;
+	padding: 5px 6px;
+}
+
+.mt_timechoose span,.mt_statechoose span{
+	font-size: 13px;
+	border-radius: 3px;
+	padding: 5px 6px;
+	margin-right: 5%;
+}
+
+.nocolor{
+	background: #c0c0c0;
+}
+.mt_timechoose span a,.mt_statechoose span a,.mt_tosubmit a,.mt_sosubmit a{
+	color: #FFFFFF;
+}
+.mt_timeother{
+	margin-left: 12%;
+	margin-bottom: 20px;
+}
+.mt_stateother{
+	margin-bottom: 20px;
+}
+.mt_tomeg,.mt_someg{
+	font-size: 13px;
+	font-weight: 700;
+	color:#c0c0c0;
+	margin-right: 2%;
+}
+
+.mt_timeother select,.mt_stateother select{
+	padding: 2px 5px;
+	font-size: 15px;
+	font-weight: 700;
+	color: #C0C0C0;
+	border-radius: 3px;
+	border: #C0C0C0 solid 1px;
+	width: 70px;
+	margin-right: 1%;
+}
+.mt_timeother select option,.mt_stateother select option{
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.mt_tosubmit,.mt_sosubmit{
+	font-size: 13px;
+	border-radius: 3px;
+	padding: 6px 8px 5px 8px;
+}
+.mc_title{
+	padding: 5px 20px;
+	border-bottom: #e7eaec solid 1px;
+}
+
+.mc_timeg{
+	font-size: 15px;
+	font-weight: 700;
+	margin-right: 15px;
+	color: #C0C0C0;
+}
+.mc_tihide a{
+	color: #c0c0c0;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.mc_chart{
+	height: 400px;
+}
+
+.mb_title{
+	text-align: right;
+	margin: 15px 0;
+	font-size: 14px;
+	font-weight: 700;
+	margin-right: 15px;
+	color: #C0C0C0;
+}
+
+.mytable_table{
+	margin-bottom: 10px;
+}
+
+.mytable_table i,.mb_title i{
+	margin:0 5px;
+}
+
+.mytable_table th,.mytable_table td{
+	text-align:center;
+}
+
+.mb_page{
+	text-align: center;
+	margin: 5px;
+}
+
+
+.borderleftred{
+	border-left: #e76f51 solid 3px;
+}
+
+.borderleftgreen{
+	border-left: #2a9d8f solid 3px;
+}
+.borderleftgray{
+	border-left: #999999 solid 3px;
+}
+
+.borderred{
+	border-top: #e76f51 solid 3px;
+	border-bottom: #e76f51 solid 1px;
+	border-left: #e76f51 solid 1px;
+	border-right: #e76f51 solid 1px;
+}
+
+.bordergreen{
+	border-top: #2a9d8f solid 3px;
+	border-bottom: #2a9d8f solid 1px;
+	border-left: #2a9d8f solid 1px;
+	border-right: #2a9d8f solid 1px;
+}
+.bordergray{
+	border-top: #999999 solid 3px;
+	border-bottom: #999999 solid 1px;
+	border-left: #999999 solid 1px;
+	border-right: #999999 solid 1px;
+}
+
+.myinfo_left{
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+.myinfo_right{
+	width: 28%;
+	margin-left: 5%;
+	background: #FFFFFF;
+	box-shadow: 3px 3px 3px #888888;
+	padding: 15px 0 20px 0;
+}
+.mil_meg{
+	margin: 10px 0 10px 10px;
+	padding: 15px 15px 5px 20px;
+	width: 97%;	
+	background: #f7f8f8;
+	border-top: #C0C0C0 solid 1px;
+	border-right: #C0C0C0 solid 1px;
+	border-bottom: #C0C0C0 solid 1px;
+	box-shadow: 3px 3px 3px #888888
+}
+.mil_title{
+	font-size: 16px;
+	font-weight: 600;
+}
+.mil_time{
+	margin: 0;
+}
+
+.mir_user{
+	padding: 10px 0;
+	text-align: center;
+	border-bottom: #C0C0C0 solid 1px;
+}
+.mriu_meg{
+	font-size: 17px;
+	font-weight: 600;
+	color: #999999;
+}
+.mriu_num{
+	font-size: 25px;
+	font-weight: 700;
+	color: #999999;
+	margin: 0;
+}
+
+.mir_meg{
+	padding: 10px;
+}
+
+.mirm_title{
+	text-align: center;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.mirm_time{
+	text-align: center;
+}
+
+.mirm_content{
+	text-indent: 2em;
+	font-size: 14px;
+	line-height: 28px;
+}
+
+.mil_page{
+	text-align: center;
+}
+.mir_btn{
+	margin-top: 20px;
+}
+
+.mirt_submit{
+	background: #1ab394;
+	padding: 5px 10px;
+	border-radius: 3px;
+	color: #FFFFFF;
+	font-weight: 600;
+	margin-right: 15px;
+}
+.mirt_throw{
+	background: #C0C0C0;
+	padding: 5px 10px;
+	border-radius: 3px;
+	color: #FFFFFF;
+	font-weight: 600;
+	margin-right: 15px;
+}
+
+.tablespan{
+	font-size: 16px;
+}
+
+.testreportstate{
+	width: 11.5%;
+}

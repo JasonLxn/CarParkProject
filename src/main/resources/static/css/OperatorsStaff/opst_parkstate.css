@@ -1,0 +1,66 @@
+.carp{
+	background: #264653;
+}
+
+.c_m_tips{
+	margin-top: 20px;
+	font-size: 13px;
+	text-align: center;
+	font-weight: 700;
+}
+.c_m_tips span{
+	margin-right: 10px;
+}
+.carp_park{
+	border: #FFFFFF solid 5px;
+	height: 200px;
+	padding: 0;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.c_p_p{
+	font-size: 100px;
+	text-align: center;
+	height: 100px;
+}
+
+.c_p_n{
+	font-size: 50px;
+	text-align: center;
+}
+
+.carm{
+	margin-left: 90px;
+	border-top: #264653 solid 5px;
+	background: #FFFFFF;
+	height: 500px;
+}
+
+.carm_logo{
+	background: #264653;
+	color: #FFFFFF;
+	font-size: 40px;
+	font-weight: 700;
+	margin-top: 30px;
+	text-align: center;
+	width: 25%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.carm_carnum{
+	color: #264653;
+	font-size: 25px;
+	font-weight: 700;
+	text-align: center;
+}
+.carm_img{
+	width: 50%;
+	height: 50%;
+	margin: 20px 25% 40px;
+}
+
+.carm_meg{
+	font-weight: 700;
+	text-align: center;
+}
+

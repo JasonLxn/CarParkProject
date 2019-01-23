@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.carpark.mapper.OperatMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neu.carpark.entity.Operat">
+        <id column="oper_id" property="operId" />
+        <result column="oper_worknum" property="operWorknum" />
+        <result column="oper_name" property="operName" />
+        <result column="oper_sex" property="operSex" />
+        <result column="oper_phone" property="operPhone" />
+        <result column="oper_position" property="operPosition" />
+    </resultMap>
+
+</mapper>
