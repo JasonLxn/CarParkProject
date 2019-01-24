@@ -1,5 +1,6 @@
 package com.neu.carpark.entity;
 
+import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author lxn123
- * @since 2019-01-21
+ * @since 2019-01-24
  */
 public class Operat implements Serializable {
 
@@ -28,6 +29,10 @@ public class Operat implements Serializable {
     private String operPhone;
     @TableField("oper_position")
     private String operPosition;
+    @TableField("oper_registtime")
+    private Date operRegisttime;
+    @TableField("oper_logintime")
+    private Date operLogintime;
 
 
     public String getOperId() {
@@ -78,6 +83,22 @@ public class Operat implements Serializable {
         this.operPosition = operPosition;
     }
 
+    public Date getOperRegisttime() {
+        return operRegisttime;
+    }
+
+    public void setOperRegisttime(Date operRegisttime) {
+        this.operRegisttime = operRegisttime;
+    }
+
+    public Date getOperLogintime() {
+        return operLogintime;
+    }
+
+    public void setOperLogintime(Date operLogintime) {
+        this.operLogintime = operLogintime;
+    }
+
     @Override
     public String toString() {
         return "Operat{" +
@@ -87,6 +108,8 @@ public class Operat implements Serializable {
         ", operSex=" + operSex +
         ", operPhone=" + operPhone +
         ", operPosition=" + operPosition +
+        ", operRegisttime=" + operRegisttime +
+        ", operLogintime=" + operLogintime +
         "}";
     }
 }

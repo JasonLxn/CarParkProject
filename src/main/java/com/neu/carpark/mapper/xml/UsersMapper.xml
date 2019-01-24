@@ -8,6 +8,8 @@
         <result column="user_name" property="userName" />
         <result column="user_sex" property="userSex" />
         <result column="user_phone" property="userPhone" />
+        <result column="user_registtime" property="userRegisttime" />
+        <result column="user_logintime" property="userLogintime" />
     </resultMap>
 
 </mapper>

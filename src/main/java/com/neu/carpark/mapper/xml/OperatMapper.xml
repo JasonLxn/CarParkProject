@@ -10,6 +10,8 @@
         <result column="oper_sex" property="operSex" />
         <result column="oper_phone" property="operPhone" />
         <result column="oper_position" property="operPosition" />
+        <result column="oper_registtime" property="operRegisttime" />
+        <result column="oper_logintime" property="operLogintime" />
     </resultMap>
 
 </mapper>
