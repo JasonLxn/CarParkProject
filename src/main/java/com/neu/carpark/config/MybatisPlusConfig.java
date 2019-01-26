@@ -57,7 +57,7 @@ public class MybatisPlusConfig {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setCapitalMode(true);
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "operat" }); // 需要生成的表
+        strategy.setInclude(new String[] { "userrole" }); // 需要生成的表
         mpg.setStrategy(strategy);
 
         // 包配置

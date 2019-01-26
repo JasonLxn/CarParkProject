@@ -13,4 +13,8 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface AlluserService extends IService<Alluser> {
 
+    /**
+     * 生成盐，并加密密码
+     */
+    void encryptionPwd(Alluser alluser);
 }

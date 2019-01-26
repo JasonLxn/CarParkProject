@@ -10,25 +10,25 @@ import java.io.Serializable;
  * </p>
  *
  * @author lxn123
- * @since 2019-01-21
+ * @since 2019-01-24
  */
 public class Userrole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @TableId("ur_id")
-    private Integer urId;
+    private String urId;
     @TableField("ur_allid")
     private String urAllid;
     @TableField("ur_roid")
     private Integer urRoid;
 
 
-    public Integer getUrId() {
+    public String getUrId() {
         return urId;
     }
 
-    public void setUrId(Integer urId) {
+    public void setUrId(String urId) {
         this.urId = urId;
     }
 

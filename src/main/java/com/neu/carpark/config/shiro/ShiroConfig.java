@@ -78,8 +78,8 @@ public class ShiroConfig {
 		chains.put("/static/**", "anon");
 		chains.put("/403", "anon");
 		chains.put("/druid/**", "anon");
-		//配置不会被拦截的链接
-
+		//配置默认启动地址
+		chains.put("/", "anon");
 
 		// 配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
 		chains.put("/logout", "logout");

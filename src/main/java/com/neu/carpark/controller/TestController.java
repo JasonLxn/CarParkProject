@@ -17,12 +17,6 @@ public class TestController {
     @Autowired
     UsersService usersService;
 
-    @RequestMapping("/test1")
-    @ResponseBody
-    public ResponseBo test01(){
-        List<Users> usersList=usersService.selectList(new EntityWrapper<Users>());
-        return ResponseBo.ok().put("users",usersList);
-    }
 
     @RequestMapping("login")
     public String login(){
