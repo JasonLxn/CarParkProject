@@ -20,7 +20,7 @@ public class ResponseBo extends HashMap<String, Object>{
 	}
 
 	public static ResponseBo error(String msg) {
-		return error(500, msg);
+		return error(0, msg);
 	}
 
 	public static ResponseBo error(int code, String msg) {

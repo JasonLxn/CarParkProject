@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.neu.carpark.entity.*;
 import com.neu.carpark.service.*;
 import com.neu.carpark.statictool.UtilsTools;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +60,23 @@ public class CarparkApplicationTests {
 
     @Test
     public void test(){
-        List<Alluser> allusers=alluserService.selectList(new EntityWrapper<Alluser>());
-        for (Alluser alluser:allusers) {
-            System.out.println(alluser);
+        String account="A000001";
+        String password="123456";
+        UsernamePasswordToken token=new UsernamePasswordToken(account,password);
+        Subject subject=SecurityUtils.getSubject();
+        subject.login(token);
+
+        try {
+            //shiro的登录方法
+            System.out.println(UtilsTools.getuser().getAllId());
+        } catch (UnknownAccountException e) {
+            System.out.println("error1");
+        } catch (IncorrectCredentialsException e) {
+            System.out.println("账号或密码错误");
+        } catch (LockedAccountException e) {
+            System.out.println("error2");
+        } catch (AuthenticationException e) {
+            System.out.println("认证失败！");
         }
     }
 }

@@ -13,9 +13,11 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.web.filter.DelegatingFilterProxy;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -130,5 +132,15 @@ public class ShiroConfig {
 		AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
 		authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
 		return authorizationAttributeSourceAdvisor;
+	}
+
+	@Bean
+	public FilterRegistrationBean delegatingFilterProxy(){
+		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+		DelegatingFilterProxy proxy = new DelegatingFilterProxy();
+		proxy.setTargetFilterLifecycle(true);
+		proxy.setTargetBeanName("shiroFilter");
+		filterRegistrationBean.setFilter(proxy);
+		return filterRegistrationBean;
 	}
 }

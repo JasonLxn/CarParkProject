@@ -17,4 +17,11 @@ public interface AlluserService extends IService<Alluser> {
      * 生成盐，并加密密码
      */
     void encryptionPwd(Alluser alluser);
+
+    /**
+     *获取用户类型
+     * @param alluser 登录用户
+     * @return 用户角色类型
+     */
+    String getUserRolename(Alluser alluser);
 }

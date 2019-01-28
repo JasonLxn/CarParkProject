@@ -11,6 +11,7 @@
     <groupId>com.neu</groupId>
     <artifactId>carpark</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>carpark</name>
     <description>Demo project for Spring Boot</description>
 
@@ -33,6 +34,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--打包成war时启动-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!--thymeleaf-->
@@ -148,8 +156,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>carpark</finalName><!-- 打包后的war名称-->
+                </configuration>
             </plugin>
+
         </plugins>
+
 
         <!--将mapper的xml放到与mapper的同级目录-->
         <resources>

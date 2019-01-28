@@ -48,41 +48,48 @@
     <dd class="val_icon">
         <div class="checkcode">
             <input type="text" id="J_codetext" placeholder="验证码" maxlength="4" class="login_txtbx">
-            <canvas class="J_codeimg" id="myCanvas" onclick="createCode()">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
+            <canvas class="J_codeimg" id="myCanvas" onclick="createCode()">对不起，您的浏览器不支持验证码显示，请下载最新版浏览器!</canvas>
         </div>
         <input type="button" value="更换验证码" class="ver_btn" onClick="validate();">
     </dd>
     <dd>
         <input type="button" value="立即登陆" class="submit_btn" @click="login"/>
     </dd>
-    <dd>
+    <dd id="tipmeg">
         <p>© LXN 2019</p>
         <p>P+智慧停车场</p>
+        <p id="loginmeg"></p>
     </dd>
 </dl>
 </body>
 </html>
 <script>
-    var vm=new Vue({
-        el:'#loginPage',
-        data:{
-            account:'',
-            password:'',
+    var vm = new Vue({
+        el: '#loginPage',
+        data: {
+            account: '',
+            password: '',
         },
-        methods:{
-            login:function () {
-                buttonvalidate();
-                var data="account="+vm.account+"&password="+vm.password;
-                $.ajax({
-                    url:"/login",
-                    type:"POST",
-                    data:data,
-                    dataType:"json",
-                    success:function (result) {
-                        alert(result.msg);
-                    }
-
-                })
+        methods: {
+            login: function () {
+                if(buttonvalidate()){
+                    var data = "account=" + vm.account + "&password=" + vm.password;
+                    $.ajax({
+                        url: "/login",
+                        type: "POST",
+                        data: data,
+                        dataType: "json",
+                        success: function (result) {
+                            if(result.code==0){
+                                console.log(result);
+                                document.getElementById("loginmeg").innerHTML=result.msg;
+                            }
+                            if(result.code==1){
+                               window.location.href=result.nextpage;
+                            }
+                        }
+                    })
+                }
             }
         }
     })

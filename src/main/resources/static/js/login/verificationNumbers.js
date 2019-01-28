@@ -36,18 +36,17 @@ function buttonvalidate(){
     var codeToUp=code.toUpperCase();
     if(inputCode.length <=0) {
       document.getElementById("J_codetext").setAttribute("placeholder","暂没验证码");
+      document.getElementById("loginmeg").innerHTML="请输入验证码";
       return false;
     }
     else if(inputCode != codeToUp ){
       document.getElementById("J_codetext").value="";
       document.getElementById("J_codetext").setAttribute("placeholder","验证码错误");
+      document.getElementById("loginmeg").innerHTML="验证码错误,请重新输入";
       createCode();
       return false;
     }
     else {
-      window.open(document.getElementById("J_down").getAttribute("data-link"));
-      document.getElementById("J_codetext").value="";
-      createCode();
       return true;
     }
 }

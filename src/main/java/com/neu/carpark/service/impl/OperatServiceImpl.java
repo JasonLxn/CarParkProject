@@ -6,6 +6,8 @@ import com.neu.carpark.service.OperatService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * <p>
  *  服务实现类
@@ -17,4 +19,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class OperatServiceImpl extends ServiceImpl<OperatMapper, Operat> implements OperatService {
 
+    @Override
+    public void updateLogintime(String id, Date newlogintime) {
+        Operat operat=this.selectById(id);
+        operat.setOperLogintime(newlogintime);
+        this.updateById(operat);
+    }
 }

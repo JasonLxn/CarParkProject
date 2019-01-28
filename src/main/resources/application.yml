@@ -45,6 +45,7 @@ spring:
       prefix: /
       suffix: .html
     static-path-pattern: /static/**
+    throw-exception-if-no-handler-found: true
 
   #redis
   redis:
@@ -52,7 +53,7 @@ spring:
     database: 0
     host: 47.107.104.154
     port: 6379
-    password:    # 密码（默认为空）
+    password: 123456   # 密码（默认为空）
     timeout: 6000ms # 连接超时时长（毫秒）
     jedis:
       pool:
