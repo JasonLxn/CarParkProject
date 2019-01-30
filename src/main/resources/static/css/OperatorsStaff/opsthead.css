@@ -1,5 +1,5 @@
 .navbar-header{
-	width: 52%;
+	width: 50%;
 }
 .carred{
 	color: #e76f51;
@@ -19,7 +19,9 @@
 .cargray{
 	color: #999999;
 }
-
+.carblue{
+	color: #264653;
+}
 .systemcolor{
 	background: #1AB394;
 }

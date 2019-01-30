@@ -1,5 +1,6 @@
 package com.neu.carpark.controller.login;
 
+import com.neu.carpark.config.shiro.ShiroUtils;
 import com.neu.carpark.service.AlluserService;
 import com.neu.carpark.service.OperatService;
 import com.neu.carpark.statictool.ResponseBo;
@@ -56,7 +57,7 @@ public class LoginController {
             String rolename=alluserService.getUserRolename(UtilsTools.getuser());
             if(rolename.equals("运营员")){
                 operatService.updateLogintime(UtilsTools.getuser().getAllId(),new Date());
-                nextpage="/loginstaff";
+                nextpage="/staff/home";
                 return ResponseBo.ok().put("nextpage",nextpage);
             }else if(rolename.equals("维修员")){
                 operatService.updateLogintime(UtilsTools.getuser().getAllId(),new Date());
@@ -77,14 +78,7 @@ public class LoginController {
         }
     }
 
-    /**
-     * 跳转运营员角色界面
-     * @return
-     */
-    @RequestMapping("/loginstaff")
-    public String loginstaff(){
-        return "/OperatorsStaff/opst_home.html";
-    }
+
 
     /**
      * 跳转维修员角色界面
@@ -92,6 +86,16 @@ public class LoginController {
      */
     @RequestMapping("/loginservice")
     public String loginservice(){
-        return "/OperatorsStaff/opst_parkstate.html";
+        return "/OperatorsStaff/opst_parkstate";
+    }
+
+    /**
+     * 注销登录
+     * @return
+     */
+    @RequestMapping("/logout")
+    public String logout(){
+        ShiroUtils.logout();
+        return "redirect:/";
     }
 }

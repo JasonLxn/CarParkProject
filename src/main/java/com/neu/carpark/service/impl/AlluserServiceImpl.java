@@ -20,10 +20,11 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author lxn123
- * @since 2019-01-21
+ * @since 2019-01-29
  */
 @Service
 public class AlluserServiceImpl extends ServiceImpl<AlluserMapper, Alluser> implements AlluserService {
+
     @Autowired
     UserroleService userroleService;
     @Autowired

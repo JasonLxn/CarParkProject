@@ -30,10 +30,15 @@
 }
 
 .carm{
-	margin-left: 90px;
+	margin-left: 850px;
 	border-top: #264653 solid 5px;
 	background: #FFFFFF;
 	height: 500px;
+
+}
+#carm{
+	position:fixed;
+	top: 90px;
 }
 
 .carm_logo{

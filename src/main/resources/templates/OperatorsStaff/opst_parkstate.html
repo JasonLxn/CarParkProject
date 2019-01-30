@@ -5,140 +5,162 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/static/css/font-awesome.css" />
-	<link rel="stylesheet" href="/static/css/animate.css" />
-	<link rel="stylesheet" href="/static/css/style.css" />
-	<link rel="stylesheet" href="/static/css/OperatorsStaff/opsthead.css" />
-	<link rel="stylesheet" href="/static/css/OperatorsStaff/opst_parkstate.css" />
-	<script type="text/javascript" src="/static/js/jquery.min.js" ></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js" ></script>
-
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/static/css/animate.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="/static/css/OperatorsStaff/opsthead.css"/>
+    <link rel="stylesheet" href="/static/css/OperatorsStaff/opst_parkstate.css"/>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/vue.js"></script>
 </head>
 
 <body class="gray-bg top-navigation">
 
-    <div id="wrapper">
-        <div id="page-wrapper" class="gray-bg">
-            <div class="row border-bottom white-bg">
-                <nav class="navbar navbar-static-top" role="navigation">
-                    <div class="navbar-header">
-                        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-                            <i class="fa fa-reorder"></i>
-                        </button>
-                        <a href="javascript:;" class="navbar-brand">停车场</a>
-                    </div>
-                    <div class="navbar-collapse collapse" id="navbar">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a aria-expanded="false" role="button" href="opst_home.html">首页信息</a>
-                            </li>
-                            <li class="dropdown active">
-                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">车位信息<span class="caret"></span></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li class="active"><a href="javascript:;">车位状态</a>
-                                    </li>
-                                    <li><a href="opst_item.html">车位详情</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">用户反馈<span class="caret"></span></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li><a href="opst_feedback.html">反馈列表</a>
-                                    </li>
-                                    <li><a href="opst_myfeedback.html">我的提交</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">检测维修<span class="caret"></span></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li><a href="">检测报告</a>
-                                    </li>
-                                    <li><a href="">维修列表</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <ul class="nav navbar-top-links navbar-right">
-                        	<li>
-                        		<a href="#">
-                        			<i></i>你好
-                        			<i></i>A00123456
-                        		</a>
-                        	</li>
-                            <li>
-                                <a href="login.html">
-                                    <i class="fa fa-sign-out"></i>注销
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-  
-  			<div class="wrapper wrapper-content" >
-  				<div class="container">
-  					<div class="row">
-  						<div class="col-lg-8 carp">
-  							<div class="col-lg-12 carp_meg">
-  								<div class="col-lg-12 c_m_tips">
-  									<span class="carwhite">●&nbsp;&nbsp;未使用</span>
-  									<span class="cargreen">●&nbsp;&nbsp;使用中</span>
-  									<span class="carred">●&nbsp;&nbsp;故障中</span>
-  									<span class="carorage">●&nbsp;&nbsp;维修中</span>
-  								</div>
-  							</div>
-							<div class="col-lg-12 carp_car">
-  								<div class="col-lg-2 carp_park">
-  									<p class="c_p_p carwhite">P</p>
-  									<p class="c_p_n carwhite">001</p>
-  								</div>
-  								<div class="col-lg-2 carp_park">
-  									<p class="c_p_p carred">P</p>
-  									<p class="c_p_n carred">002</p>
-  								</div>
-  								<div class="col-lg-2 carp_park">
-  									<p class="c_p_p cargreen">P</p>
-  									<p class="c_p_n cargreen">003</p>
-  								</div>
-  								<div class="col-lg-2 carp_park">
-  									<p class="c_p_p carorage">P</p>
-  									<p class="c_p_n carorage">004</p>
-  								</div>
-  								<div class="col-lg-2 carp_park"></div>
-  								<div class="col-lg-2 carp_park"></div>
-  								<div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div><div class="col-lg-2 carp_park"></div>
-  							</div>
-  						</div> 						
-  						<div class="col-lg-3 carm">
-  							<div class="col-lg-12">
-  								<p class="carm_logo">P</p>
-  								<p class="carm_carnum">车位：002</p>
-  								<img src="../img/demo/timg.jpg" class="carm_img"/>						
-  								<p class="carm_meg"><span>状态：</span><span class="cargreen">使用中</span></p>
-  								<p class="carm_meg"><span>使用时间：</span><span class="cargreen">45:00</span></p>
-  								<p class="carm_meg">(更新于：16:41)</p>
-  							</div>
-  						</div> 					
-  					</div>
-  				</div>
-  			</div>
-  			
-            <div class="footer">
-                <div class="pull-right">
-                    @ P+智慧停车场
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom white-bg">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                            class="navbar-toggle collapsed" type="button">
+                        <i class="fa fa-reorder"></i>
+                    </button>
+                    <a href="/staff/home" class="navbar-brand">停车场</a>
                 </div>
-                <div>
-                    <strong>Copyright</strong> LXN &copy; 2019
-                </div>
-            </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a aria-expanded="false" role="button" href="/staff/home">首页信息</a>
+                        </li>
+                        <li class="dropdown active">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
+                               data-toggle="dropdown">车位信息<span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li class="active"><a href="/staff/parkstate">车位状态</a>
+                                </li>
+                                <li><a href="/staff/parkitem">车位详情</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
+                               data-toggle="dropdown">用户反馈<span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="/staff/feedback">反馈列表</a>
+                                </li>
+                                <li><a href="/staff/myfeedback">我的提交</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
+                               data-toggle="dropdown">检测维修<span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="/staff/report">检测报告</a>
+                                </li>
+                                <li><a href="/staff/service">维修列表</a>
+                                </li>
+                            </ul>
+                        </li>
 
+                    </ul>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <a href="#">
+                                <i></i>欢迎你，
+                                <i></i>{{userrole}}：{{username}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout">
+                                <i class="fa fa-sign-out"></i>注销
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </div>
-    
-</body>
 
+        <div class="wrapper wrapper-content" id="parkmeg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 carp">
+                        <div class="col-lg-12 carp_meg">
+                            <div class="col-lg-12 c_m_tips">
+                                <span class="carwhite">●&nbsp;&nbsp;未使用</span>
+                                <span class="cargreen">●&nbsp;&nbsp;使用中</span>
+                                <span class="carred">●&nbsp;&nbsp;故障中</span>
+                                <span class="carorage">●&nbsp;&nbsp;维修中</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 carp_car">
+                            <template v-for="park in parkmeg">
+                                <template v-if="park.parkState=='未使用'">
+                                    <div class="col-lg-2 carp_park" @click="parkinfo(park.parkId)">
+                                        <p class="c_p_p carwhite">P</p>
+                                        <p class="c_p_n carwhite">{{park.parkNum}}</p>
+                                    </div>
+                                </template>
+                                <template v-if="park.parkState=='故障中'">
+                                    <div class="col-lg-2 carp_park" @click="parkinfo(park.parkId)">
+                                        <p class="c_p_p carred">P</p>
+                                        <p class="c_p_n carred">{{park.parkNum}}</p>
+                                    </div>
+                                </template>
+                                <template v-if="park.parkState=='使用中'">
+                                    <div class="col-lg-2 carp_park" @click="parkinfo(park.parkId)">
+                                        <p class="c_p_p cargreen">P</p>
+                                        <p class="c_p_n cargreen">{{park.parkNum}}</p>
+                                    </div>
+                                </template>
+                                <template v-if="park.parkState=='维修中'">
+                                    <div class="col-lg-2 carp_park" @click="parkinfo(park.parkId)">
+                                        <p class="c_p_p carorage">P</p>
+                                        <p class="c_p_n carorage">{{park.parkNum}}</p>
+                                    </div>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 carm" id="carm">
+                        <div class="col-lg-12">
+                            <p class="carm_logo">P</p>
+                            <p class="carm_carnum">车位：{{info.parkNum}}</p>
+                            <!--<img src="../img/demo/timg.jpg" class="carm_img"/>-->
+                            <template v-if="info.parkState=='未使用'">
+                                <p class="carm_meg"><span>状态：</span><span>{{info.parkState}}</span></p>
+                            </template>
+                            <template v-if="info.parkState=='使用中'">
+                                <p class="carm_meg"><span>状态：</span><span class="cargreen">{{info.parkState}}</span></p>
+                                <p class="carm_meg"><span>使用时间：</span><span class="cargreen" id="carm_parktime">{{parktime}}</span></p>
+                            </template>
+                            <template v-if="info.parkState=='故障中'">
+                                <p class="carm_meg"><span>状态：</span><span class="carred">{{info.parkState}}</span></p>
+                            </template>
+                            <template v-if="info.parkState=='维修中'">
+                                <p class="carm_meg"><span>状态：</span><span class="carorage">{{info.parkState}}</span></p>
+                            </template>
+                            <p class="carm_meg">(更新于：{{hour|timefilter}}:{{minute|timefilter}})</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="pull-right">
+                @ P+智慧停车场
+            </div>
+            <div>
+                <strong>Copyright</strong> LXN &copy; 2019
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/OperatorsStaff/opst_parkstate.js"></script>
 </html>

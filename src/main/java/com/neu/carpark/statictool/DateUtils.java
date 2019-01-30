@@ -8,7 +8,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 
 /**
  * 日期处理
@@ -154,5 +154,27 @@ public class DateUtils {
     public static Date addDateYears(Date date, int years) {
         DateTime dateTime = new DateTime(date);
         return dateTime.plusYears(years).toDate();
+    }
+
+    /**
+     * 计算时间差
+     * @param endDate 结束时间
+     * @param creatDate 开始时间
+     * @return
+     */
+    public static String getDatePoor(Date endDate, Date creatDate) {
+        long nd = 1000 * 24 * 60 * 60;
+        long nh = 1000 * 60 * 60;
+        long nm = 1000 * 60;
+        long ns = 1000;
+        // 获得两个时间的毫秒时间差异
+        long diff = endDate.getTime() - creatDate.getTime();
+        // 计算差多少小时
+        long hour = diff / nh;
+        // 计算差多少分钟
+        long min = diff % nd % nh / nm;
+        // 计算差多少秒
+        long sec = diff % nd % nh % nm / ns;
+        return hour+":"+min+":"+sec;
     }
 }

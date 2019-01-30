@@ -50,14 +50,14 @@ public class MybatisPlusConfig {
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://localhost:3306/carpark?serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://47.107.104.154:3306/carpark?serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true&tinyInt1isBit=false&useUnicode=true&characterEncoding=utf8");
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setCapitalMode(true);
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "userrole" }); // 需要生成的表
+//        strategy.setInclude(new String[] { "parking" }); // 需要生成的表
         mpg.setStrategy(strategy);
 
         // 包配置

@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.service.IService;
  * </p>
  *
  * @author lxn123
- * @since 2019-01-21
+ * @since 2019-01-29
  */
 public interface DetectService extends IService<Detect> {
 

@@ -1,5 +1,6 @@
 package com.neu.carpark.entity;
 
+import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author lxn123
- * @since 2019-01-21
+ * @since 2019-01-29
  */
 public class Parking implements Serializable {
 
@@ -22,8 +23,8 @@ public class Parking implements Serializable {
     private String parkNum;
     @TableField("park_state")
     private String parkState;
-    @TableField("park_carpid")
-    private String parkCarpid;
+    @TableField("park_time")
+    private Date parkTime;
 
 
     public String getParkId() {
@@ -50,12 +51,12 @@ public class Parking implements Serializable {
         this.parkState = parkState;
     }
 
-    public String getParkCarpid() {
-        return parkCarpid;
+    public Date getParkTime() {
+        return parkTime;
     }
 
-    public void setParkCarpid(String parkCarpid) {
-        this.parkCarpid = parkCarpid;
+    public void setParkTime(Date parkTime) {
+        this.parkTime = parkTime;
     }
 
     @Override
@@ -64,7 +65,7 @@ public class Parking implements Serializable {
         "parkId=" + parkId +
         ", parkNum=" + parkNum +
         ", parkState=" + parkState +
-        ", parkCarpid=" + parkCarpid +
+        ", parkTime=" + parkTime +
         "}";
     }
 }

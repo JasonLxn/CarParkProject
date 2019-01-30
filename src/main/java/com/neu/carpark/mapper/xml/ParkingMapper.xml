@@ -7,7 +7,7 @@
         <id column="park_id" property="parkId" />
         <result column="park_num" property="parkNum" />
         <result column="park_state" property="parkState" />
-        <result column="park_carpid" property="parkCarpid" />
+        <result column="park_time" property="parkTime" />
     </resultMap>
 
 </mapper>
