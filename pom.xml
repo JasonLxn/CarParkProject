@@ -28,6 +28,8 @@
         <joda.time.version>2.9.9</joda.time.version>
         <fastjson.version>1.2.55</fastjson.version>
         <shiro.version>1.4.0</shiro.version>
+        <zxing.version>3.3.0</zxing.version>
+        <net.glxn.version>1.4</net.glxn.version>
     </properties>
 
     <dependencies>
@@ -143,6 +145,19 @@
             <artifactId>shiro-redis</artifactId>
             <version>2.4.2.1-RELEASE</version>
         </dependency>
+
+        <!-- zxing二维码生成 -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.glxn</groupId>
+            <artifactId>qrgen</artifactId>
+            <version>${net.glxn.version}</version>
+        </dependency>
+        <!-- zxing -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

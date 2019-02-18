@@ -5,16 +5,17 @@
 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="../css/bootstrap.min.css" />
-		<link rel="stylesheet" href="../css/font-awesome.css" />
-		<link rel="stylesheet" href="../css/animate.css" />
-		<link rel="stylesheet" href="../css/style.css" />
-		<link rel="stylesheet" href="../css/OperatorsStaff/opsthead.css" />
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../js/echarts.js"></script>
-		<script type="text/javascript" src="../js/OperatorsStaff/opst_item.js"></script>
-		<script type="text/javascript" src="../js/OperatorsStaff/common.js" ></script>
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/css/font-awesome.css" />
+		<link rel="stylesheet" href="/static/css/animate.css" />
+		<link rel="stylesheet" href="/static/css/style.css" />
+		<link rel="stylesheet" href="/static/css/OperatorsStaff/opsthead.css" />
+		<link rel="stylesheet" href="/static/css/loading.css" />
+		<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/static/js/echarts.js"></script>
+		<script type="text/javascript" src="/static/js/OperatorsStaff/common.js"></script>
+		<script type="text/javascript" src="/static/js/vue.js"></script>
 	</head>
 
 	<body class="gray-bg top-navigation">
@@ -27,18 +28,18 @@
 							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
                             <i class="fa fa-reorder"></i>
                         </button>
-							<a href="javascript:;" class="navbar-brand">停车场</a>
+							<a href="/staff/home" class="navbar-brand">停车场</a>
 						</div>
 						<div class="navbar-collapse collapse" id="navbar">
 							<ul class="nav navbar-nav">
 								<li>
-									<a aria-expanded="false" role="button" href="opst_home.html">首页信息</a>
+									<a aria-expanded="false" role="button" href="/staff/home">首页信息</a>
 								</li>
 								<li class="dropdown active">
 									<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">车位信息<span class="caret"></span></a>
 									<ul role="menu" class="dropdown-menu">
 										<li>
-											<a href="opst_parkstate.html">车位状态</a>
+											<a href="/staff/parkstate">车位状态</a>
 										</li>
 										<li class="active">
 											<a href="javascript:;">车位详情</a>
@@ -49,10 +50,10 @@
 									<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">用户反馈<span class="caret"></span></a>
 									<ul role="menu" class="dropdown-menu">
 										<li>
-											<a href="opst_feedback.html">反馈列表</a>
+											<a href="/staff/feedback">反馈列表</a>
 										</li>
 										<li>
-											<a href="opst_myfeedback.html">我的提交</a>
+											<a href="/staff/myfeedback">我的提交</a>
 										</li>
 									</ul>
 								</li>
@@ -60,10 +61,10 @@
 									<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">检测维修<span class="caret"></span></a>
 									<ul role="menu" class="dropdown-menu">
 										<li>
-											<a href="">检测报告</a>
+											<a href="/staff/report">检测报告</a>
 										</li>
 										<li>
-											<a href="">维修列表</a>
+											<a href="/staff/service">维修列表</a>
 										</li>
 									</ul>
 								</li>
@@ -72,12 +73,12 @@
 							<ul class="nav navbar-top-links navbar-right">
 								<li>
 									<a href="#">
-										<i></i>你好
-										<i></i>A00123456
+										<i></i>欢迎你，
+										<i></i>{{userrole}}：{{username}}
 									</a>
 								</li>
 								<li>
-									<a href="login.html">
+									<a href="/logout">
 										<i class="fa fa-sign-out"></i>注销
 									</a>
 								</li>
@@ -86,31 +87,39 @@
 					</nav>
 				</div>
 
-				<div class="wrapper wrapper-content">
+				<div class="wrapper wrapper-content" id="opst_parkitem">
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-12 mytool">
 								<div class="col-lg-12">
 								<div class="col-lg-1 mt_time"><span>时间选择:</span></div>
 								<div class="col-lg-10 mt_timechoose">
-									<span class="nocolor"><a class="fa fa-calendar-check-o">&nbsp;七天信息</a></span>
-									<span class="nocolor"><a class="fa fa-calendar-check-o">&nbsp;十五天信息</a></span>
-									<span class="systemcolor"><a class="fa fa-calendar-check-o">&nbsp;上月信息</a></span>
-									<span class="nocolor"><a class="fa fa-calendar-check-o">&nbsp;本月信息</a></span>
+									<span class="systemcolor" @click="chooseInfo"><a class="fa fa-calendar-check-o">&nbsp;七天信息</a></span>
+									<span class="nocolor" @click="chooseInfo"><a class="fa fa-calendar-check-o">&nbsp;十五天信息</a></span>
+									<span class="nocolor" @click="chooseInfo"><a class="fa fa-calendar-check-o">&nbsp;上月信息</a></span>
+									<span class="nocolor" @click="chooseInfo"><a class="fa fa-calendar-check-o">&nbsp;本月信息</a></span>
 								</div>
 								<div class="col-lg-10 mt_timeother">
 									<span class="mt_tomeg">其他月份信息:</span>
-									<select>
+									<select id="selectyear">
 										<option>2018</option>
-										<option>2017</option>
-										<option>2016</option>
+										<option selected>2019</option>
 									</select>
-									<select>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
+									<select id="selectmonth">
+										<option>01</option>
+										<option selected>02</option>
+										<option>03</option>
+										<option>04</option>
+										<option>05</option>
+										<option>06</option>
+										<option>07</option>
+										<option>08</option>
+										<option>09</option>
+										<option>10</option>
+										<option>11</option>
+										<option>12</option>
 									</select>
-									<span class="mt_tosubmit nocolor"><a class="fa fa-search"></a></span>
+									<span class="mt_tosubmit nocolor " @click="choosedate"><a class="fa fa-search"></a></span>
 								</div>
 								</div>
 							</div>
@@ -118,6 +127,11 @@
 								<div class="col-lg-12 mc_title">
 									<span class="mc_timeg">车位情况统计图</span>
 									<span class="mc_tihide"><a><i class="fa fa-angle-down"></i></a></span>
+								</div>
+								<div class="col-lg-12 spinner-box hide" style="height: 400px;">
+									<div class="circle-border">
+										<div class="circle-core"></div>
+									</div>
 								</div>
 								<div class="col-lg-12 mc_chart" id="mc_chart"></div>
 							</div>
@@ -138,40 +152,24 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>001</td>
-												<td class="cargray">未使用</td>
+											<tr v-for="parkinfo in parkitem">
+												<td>{{parkinfo.parkId}}</td>
+												<template v-if="parkinfo.parkState=='未使用'">
+												<td class="cargray">{{parkinfo.parkState}}</td>
+												</template>
+												<template v-if="parkinfo.parkState=='使用中'">
+													<td class="cargreen">{{parkinfo.parkState}}</td>
+												</template>
+												<template v-if="parkinfo.parkState=='故障中'">
+													<td class="carred">{{parkinfo.parkState}}</td>
+												</template>
+												<template v-if="parkinfo.parkState=='维修中'">
+													<td class="carorage">{{parkinfo.parkState}}</td>
+												</template>
 												<td>
-													<i class="fa fa-circle cargreen"></i>25
-													<i class="fa fa-circle carred"></i>25
-													<i class="fa fa-circle carorage"></i>25
-												</td>
-											</tr>
-											<tr>
-												<td>002</td>
-												<td class="cargreen">使用中</td>
-												<td>
-													<i class="fa fa-circle cargreen"></i>25
-													<i class="fa fa-circle carred"></i>25
-													<i class="fa fa-circle carorage"></i>25
-												</td>
-											</tr>
-											<tr>
-												<td>003</td>
-												<td class="carred">故障中</td>
-												<td>
-													<i class="fa fa-circle cargreen"></i>25
-													<i class="fa fa-circle carred"></i>25
-													<i class="fa fa-circle carorage"></i>25
-												</td>
-											</tr>
-											<tr>
-												<td>004</td>
-												<td class="carorage">维修中</td>
-												<td>
-													<i class="fa fa-circle cargreen"></i>25
-													<i class="fa fa-circle carred"></i>25
-													<i class="fa fa-circle carorage"></i>25
+													<i class="fa fa-circle cargreen"></i>{{parkinfo.useNum}}
+													<i class="fa fa-circle carred"></i>{{parkinfo.errorNum}}
+													<i class="fa fa-circle carorage"></i>{{parkinfo.serviceNum}}
 												</td>
 											</tr>
 										</tbody>
@@ -179,27 +177,28 @@
 								</div>
 								<div class="col-lg-12 mb_page">
 									<ul class="pagination">
-										<li>
-											<a href="#">&laquo;</a>
-										</li>
-										<li>
-											<a href="#">1</a>
-										</li>
-										<li>
-											<a href="#">2</a>
-										</li>
-										<li>
-											<a href="#">3</a>
-										</li>
-										<li>
-											<a href="#">4</a>
-										</li>
-										<li>
-											<a href="#">5</a>
-										</li>
-										<li>
-											<a href="#">&raquo;</a>
-										</li>
+										<template v-if="currentpage=='1'">
+											<li><a href="javascript:;" class="disabled"><span class="cargray">&laquo;</span></a></li>
+										</template>
+										<template v-else>
+											<li><a href="javascript:;" @click="turnpage(currentpage-1)">&laquo;</a></li>
+										</template>
+
+										<template v-for="pagenum in num">
+											<template v-if="pagenum==currentpage">
+												<li><a href="javascript:;" class="disabled"><span class="cargreen">{{pagenum}}</span></a></li>
+											</template>
+											<template v-else>
+												<li><a href="javascript:;" @click="turnpage(pagenum)">{{pagenum}}</a></li>
+											</template>
+										</template>
+
+										<template v-if="currentpage==num">
+											<li><a href="javascript:;" class="disabled"><span class="cargray">&raquo;</span></a></li>
+										</template>
+										<template v-else>
+											<li><a href="javascript:;" @click="turnpage(currentpage+1)">&raquo;</a></li>
+										</template>
 									</ul>
 								</div>
 							</div>
@@ -220,5 +219,6 @@
 		</div>
 
 	</body>
-
 </html>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/OperatorsStaff/opst_item.js"></script>

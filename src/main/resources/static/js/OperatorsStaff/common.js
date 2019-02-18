@@ -32,8 +32,10 @@ var controlchoose = {
 			if($(this).children("i").hasClass("fa-angle-down")){
 				$(this).children("i").removeClass("fa-angle-down").addClass("fa-angle-up");
 				$(".mc_chart").hide(1000);
+				$(".spinner-box").hide(1000);
 			}else{
 				$(this).children("i").removeClass("fa-angle-up").addClass("fa-angle-down");
+				$(".spinner-box").show(1000);
 				$(".mc_chart").show(1000);
 			}		
 		});

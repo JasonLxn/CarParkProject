@@ -17,7 +17,8 @@ var vm = new Vue({
         info: '',
         hour: '',
         minute: '',
-        parktime: ''
+        parktime: '',
+        parkId:''
     },
     created: function () {
         $.ajax({
@@ -34,6 +35,8 @@ var vm = new Vue({
                 url: '/staffpark/parkinfo/' + parkid,
                 success: function (result) {
                     vm.info = result.parkinfomeg;
+                    vm.parkId=result.parkinfomeg.parkId;
+                    console.log(vm.parkId);
                     vm.hour = new Date().getHours();
                     vm.minute = new Date().getMinutes();
                     clearTimeout(timeclean);

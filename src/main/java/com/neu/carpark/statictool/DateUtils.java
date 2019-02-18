@@ -177,4 +177,47 @@ public class DateUtils {
         long sec = diff % nd % nh % nm / ns;
         return hour+":"+min+":"+sec;
     }
+
+    /**
+     * 规定日期多少天数内的日期列表
+     * @param date 规定日期
+     * @param day 天数
+     * @return 日期列表
+     */
+    public static List<String> getDayList(Date date,int day){
+        day=-day;
+        List<String> datelist=new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+        datelist.add(sdf.format(date));
+        for(int i=-1;i>day;i--){
+            Date time=addDateDays(date,i);
+            datelist.add(sdf.format(time));
+        }
+        //反转排序
+        Collections.reverse(datelist);
+        return datelist;
+    }
+
+    /**
+     * 获取指定年月的日期列表
+     * @param year 年份
+     * @param month 月份
+     * @return
+     */
+    public static List<String> getMonthList(int year,int month){
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        cal.clear();
+        cal.set(Calendar.YEAR,year);//设置年份
+        cal.set(Calendar.MONTH, month-1);//设置月份
+        int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);//获取某月最大天数
+        cal.set(Calendar.DAY_OF_MONTH,1);
+        List<String> monthlist=new ArrayList<>();
+        monthlist.add(sdf.format(cal.getTime()));
+        for(int i=1;i<lastDay;i++){
+            Date time=addDateDays(cal.getTime(),i);
+            monthlist.add(sdf.format(time));
+        }
+        return monthlist;
+    }
 }

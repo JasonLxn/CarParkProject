@@ -10,4 +10,7 @@
         <result column="park_time" property="parkTime" />
     </resultMap>
 
+    <select id="parklistPage" resultType="parking">
+        select * from parking order by park_num ASC
+    </select>
 </mapper>

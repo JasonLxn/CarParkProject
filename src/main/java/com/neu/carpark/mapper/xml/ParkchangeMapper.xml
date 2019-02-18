@@ -13,4 +13,38 @@
         <result column="parc_parkid" property="parcParkid" />
     </resultMap>
 
+
+    <select id="getDayPark" resultType="java.util.HashMap">
+        SELECT COUNT(parc_astate='使用中' OR NULL) AS useNum,
+        COUNT(parc_astate='故障中' OR NULL) AS errorNum,
+        COUNT(parc_astate='维修中' OR NULL) AS serviceNum,
+        p.park_num AS parkId,p.park_state AS parkState
+        FROM parkchange AS c,parking AS p
+        WHERE c.parc_parkid=p.park_id AND
+        parc_parkid=#{id} AND
+        DATE_SUB(CURDATE(),INTERVAL #{day} DAY) &lt;= DATE(parc_time)
+    </select>
+
+    <select id="getMonthPark" resultType="java.util.HashMap">
+        SELECT COUNT(parc_astate='使用中' OR NULL) AS useNum,
+        COUNT(parc_astate='故障中' OR NULL) AS errorNum,
+        COUNT(parc_astate='维修中' OR NULL) AS serviceNum,
+        p.park_num AS parkId,p.park_state AS parkState
+        FROM parkchange AS c,parking AS p
+        WHERE c.parc_parkid=p.park_id AND
+        parc_parkid=#{id} AND
+        DATE_FORMAT(CURDATE(),'%Y%m')-DATE_FORMAT(c.parc_time,'%Y%m')=#{month}
+    </select>
+
+    <select id="getYearMonthPark" resultType="java.util.HashMap">
+        SELECT COUNT(parc_astate='使用中' OR NULL) AS useNum,
+        COUNT(parc_astate='故障中' OR NULL) AS errorNum,
+        COUNT(parc_astate='维修中' OR NULL) AS serviceNum,
+        p.park_num AS parkId,p.park_state AS parkState
+        FROM parkchange AS c,parking AS p
+        WHERE c.parc_parkid=p.park_id AND
+        parc_parkid=#{id} AND
+        DATE_FORMAT(c.parc_time,'%Y%m')=#{date}
+    </select>
+
 </mapper>

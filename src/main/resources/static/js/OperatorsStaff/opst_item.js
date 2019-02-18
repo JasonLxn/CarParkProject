@@ -41,7 +41,7 @@ var parkOption = {
 		axisTick: {
 			show: false
 		},
-		data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+		data: [],
 	}],
 	yAxis: [{
 		type: 'value'
@@ -51,24 +51,147 @@ var parkOption = {
 			type: 'bar',
 			barGap: 0,
 			label: labelOption,
-			data: [320, 332, 301, 334, 390, 320, 332, 301, 334, 390]
+			data: [],
 		},
 		{
 			name: '故障次数',
 			type: 'bar',
 			label: labelOption,
-			data: [220, 182, 191, 234, 290, 220, 182, 191, 234, 290]
+			data: [],
 		},
 		{
 			name: '维修次数',
 			type: 'bar',
 			label: labelOption,
-			data: [150, 232, 201, 154, 190, 150, 232, 201, 154, 190]
+			data: [],
 		},
 	]
 };
 
-$(function() {
-	var parkEchart = echarts.init(document.getElementById("mc_chart"));
-	parkEchart.setOption(parkOption);
-});
+// var loadingstart=function(){
+//
+// };
+//
+// window.onload=function () {
+//     var parkEchart = echarts.init(document.getElementById("mc_chart"));
+//     parkEchart.setOption(parkOption);
+// };
+
+
+var vm=new Vue({
+	el:'#opst_parkitem',
+	data:{
+		parkitem:'',
+		num:'',
+		currentpage:'',
+		datevalue:'',
+	},
+	created:function(){
+        $(document).ajaxStart(function () {
+            $(".spinner-box").removeClass("hide");
+            $(".mc_chart").addClass("hide");
+        }).ajaxStop(function () {
+            $(".mc_chart").removeClass("hide");
+            $(".spinner-box").addClass("hide");
+        });
+		$.ajax({
+			url:'/staffpark/parkitem',
+			success:function (result) {
+;				vm.parkitem=result.parkinfo;
+				vm.num=result.page.pages;
+				vm.currentpage=result.page.current;
+                vm.getTime();
+                vm.echartparkajax(vm.datevalue);
+            }
+		})
+	},
+	methods:{
+        turnpage:function (num) {
+        	var value=vm.datevalue;
+			if(value==7||value==15){
+				vm.dayajax(num,value);
+			}else if(value==0||value==1){
+				vm.monthajax(num,value);
+			}else{
+				vm.dateajax(num,value);
+			}
+        },
+        chooseInfo:function () {
+        	vm.getTime();
+			vm.turnpage(1);
+			vm.echartparkajax(vm.datevalue);
+        },
+        choosedate:function(){
+			vm.getYearMonth();
+			vm.turnpage(1);
+			vm.echartparkajax(vm.datevalue);
+		},
+		getTime:function () {
+			 var value=$(".systemcolor a").html();
+			 if(value.indexOf("七天信息")!=-1)
+			 	vm.datevalue=7;
+			 if(value.indexOf("十五天信息")!=-1)
+                vm.datevalue=15;
+			 if(value.indexOf("上月信息")!=-1)
+                vm.datevalue=1;
+			 if(value.indexOf("本月信息")!=-1)
+                vm.datevalue=0;
+        },
+		getYearMonth:function(){
+			var year=$("#selectyear option:selected").html();
+			var month=$("#selectmonth option:selected").html();
+			vm.datevalue=year+month;
+			console.log(vm.datevalue);
+		},
+		dayajax:function (num,day) {
+            $.ajax({
+                url:'/staffpark/turndaypark/'+num+'/'+day,
+                success:function (result) {
+                    vm.parkitem=result.parkinfo;
+                    vm.num=result.page.pages;
+                    vm.currentpage=result.page.current;
+                }
+            })
+        },
+		monthajax:function (num,month) {
+            $.ajax({
+                url:'/staffpark/turnmonthpark/'+num+'/'+month,
+                success:function (result) {
+                    vm.parkitem=result.parkinfo;
+                    vm.num=result.page.pages;
+                    vm.currentpage=result.page.current;
+                }
+            })
+        },
+		dateajax:function(num,date){
+            $.ajax({
+                url:'/staffpark/turndatepark/'+num+'/'+date,
+                success:function (result) {
+                    vm.parkitem=result.parkinfo;
+                    vm.num=result.page.pages;
+                    vm.currentpage=result.page.current;
+                }
+            })
+		},
+		echartparkajax:function (value) {
+        	$(document).ajaxStart(function () {
+        		$(".spinner-box").removeClass("hide");
+        		$(".mc_chart").addClass("hide");
+            }).ajaxStop(function () {
+                $(".mc_chart").removeClass("hide");
+                $(".spinner-box").addClass("hide");
+            });
+            $.ajax({
+                url:'/staffpark/echartpark/'+value,
+                success:function (result) {
+                	parkOption.xAxis[0].data=result.time;
+                	parkOption.series[0].data=result.useNum;
+                    parkOption.series[1].data=result.errorNum;
+                    parkOption.series[2].data=result.serviceNum;
+                    var chooseEchart = echarts.init(document.getElementById("mc_chart"));
+                    chooseEchart.setOption(parkOption);
+                }
+            })
+        }
+	}
+})
