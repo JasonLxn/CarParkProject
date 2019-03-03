@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author lxn123
- * @since 2019-01-29
+ * @since 2019-03-03
  */
 public class Detect implements Serializable {
 
@@ -19,14 +19,18 @@ public class Detect implements Serializable {
 
     @TableId("dete_id")
     private String deteId;
-    @TableField("dete_state")
-    private String deteState;
-    @TableField("dete_creattime")
-    private Date deteCreattime;
-    @TableField("dete_endtime")
-    private Date deteEndtime;
-    @TableField("dete_febaid")
-    private String deteFebaid;
+    @TableField("dete_bstate")
+    private String deteBstate;
+    @TableField("dete_atate")
+    private String deteAtate;
+    @TableField("dete_title")
+    private String deteTitle;
+    @TableField("dete_meg")
+    private String deteMeg;
+    @TableField("dete_time")
+    private Date deteTime;
+    @TableField("dete_parkid")
+    private String deteParkid;
     @TableField("dete_operid")
     private String deteOperid;
 
@@ -39,36 +43,52 @@ public class Detect implements Serializable {
         this.deteId = deteId;
     }
 
-    public String getDeteState() {
-        return deteState;
+    public String getDeteBstate() {
+        return deteBstate;
     }
 
-    public void setDeteState(String deteState) {
-        this.deteState = deteState;
+    public void setDeteBstate(String deteBstate) {
+        this.deteBstate = deteBstate;
     }
 
-    public Date getDeteCreattime() {
-        return deteCreattime;
+    public String getDeteAtate() {
+        return deteAtate;
     }
 
-    public void setDeteCreattime(Date deteCreattime) {
-        this.deteCreattime = deteCreattime;
+    public void setDeteAtate(String deteAtate) {
+        this.deteAtate = deteAtate;
     }
 
-    public Date getDeteEndtime() {
-        return deteEndtime;
+    public String getDeteTitle() {
+        return deteTitle;
     }
 
-    public void setDeteEndtime(Date deteEndtime) {
-        this.deteEndtime = deteEndtime;
+    public void setDeteTitle(String deteTitle) {
+        this.deteTitle = deteTitle;
     }
 
-    public String getDeteFebaid() {
-        return deteFebaid;
+    public String getDeteMeg() {
+        return deteMeg;
     }
 
-    public void setDeteFebaid(String deteFebaid) {
-        this.deteFebaid = deteFebaid;
+    public void setDeteMeg(String deteMeg) {
+        this.deteMeg = deteMeg;
+    }
+
+    public Date getDeteTime() {
+        return deteTime;
+    }
+
+    public void setDeteTime(Date deteTime) {
+        this.deteTime = deteTime;
+    }
+
+    public String getDeteParkid() {
+        return deteParkid;
+    }
+
+    public void setDeteParkid(String deteParkid) {
+        this.deteParkid = deteParkid;
     }
 
     public String getDeteOperid() {
@@ -83,10 +103,12 @@ public class Detect implements Serializable {
     public String toString() {
         return "Detect{" +
         "deteId=" + deteId +
-        ", deteState=" + deteState +
-        ", deteCreattime=" + deteCreattime +
-        ", deteEndtime=" + deteEndtime +
-        ", deteFebaid=" + deteFebaid +
+        ", deteBstate=" + deteBstate +
+        ", deteAtate=" + deteAtate +
+        ", deteTitle=" + deteTitle +
+        ", deteMeg=" + deteMeg +
+        ", deteTime=" + deteTime +
+        ", deteParkid=" + deteParkid +
         ", deteOperid=" + deteOperid +
         "}";
     }

@@ -188,12 +188,27 @@
 	padding-top: 15px;
 	padding-bottom: 10px;
 }
+.myinfoerror{
+	min-height: 328px;
+	background: #FFFFFF;
+}
+.mil_container{
+	min-height: 750px;
+	padding: 0;
+}
+
 .myinfo_right{
-	width: 28%;
-	margin-left: 5%;
+	width: 26%;
+	margin-left: 60%;
 	background: #FFFFFF;
 	box-shadow: 3px 3px 3px #888888;
 	padding: 15px 0 20px 0;
+	min-height: 450px;
+}
+
+#mydetect{
+	position:fixed;
+	top: 223px;
 }
 .mil_meg{
 	margin: 10px 0 10px 10px;
@@ -204,6 +219,12 @@
 	border-right: #C0C0C0 solid 1px;
 	border-bottom: #C0C0C0 solid 1px;
 	box-shadow: 3px 3px 3px #888888
+}
+.mil_nullmeg{
+	margin-top: 150px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
 }
 .mil_title{
 	font-size: 16px;
@@ -248,6 +269,7 @@
 	text-indent: 2em;
 	font-size: 14px;
 	line-height: 28px;
+    min-height: 200px;
 }
 
 .mil_page{

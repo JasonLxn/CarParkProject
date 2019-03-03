@@ -14,4 +14,36 @@
         <result column="feba_userid" property="febaUserid" />
     </resultMap>
 
+    <select id="getDayFeedback" resultType="feedback">
+        SELECT *
+        FROM feedback
+        WHERE feba_state=#{state} AND
+        DATE_SUB(CURDATE(),INTERVAL #{day} DAY)&lt;=feba_usertime
+        ORDER BY feba_usertime DESC
+    </select>
+
+    <select id="getDateFeedback" resultType="feedback">
+        SELECT *
+        FROM feedback
+        WHERE feba_state=#{state} AND
+        DATE_FORMAT(feba_usertime,'%Y%m')=#{date}
+        ORDER BY feba_usertime DESC
+    </select>
+
+    <select id="getMyDayFed" resultType="feedback">
+        SELECT *
+        FROM feedback
+        WHERE feba_operid=#{opstid} AND
+        DATE_SUB(CURDATE(),INTERVAL #{day} DAY)&lt;=feba_opertime
+        ORDER BY feba_opertime DESC
+    </select>
+    
+    <select id="getMyDateFed" resultType="feedback">
+        SELECT *
+        FROM feedback
+        WHERE feba_operid=#{opstid} AND
+        DATE_FORMAT(feba_opertime,'%Y%m')=#{date}
+        ORDER BY feba_opertime DESC
+    </select>
+
 </mapper>

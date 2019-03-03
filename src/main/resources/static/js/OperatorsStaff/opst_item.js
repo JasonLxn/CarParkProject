@@ -68,16 +68,6 @@ var parkOption = {
 	]
 };
 
-// var loadingstart=function(){
-//
-// };
-//
-// window.onload=function () {
-//     var parkEchart = echarts.init(document.getElementById("mc_chart"));
-//     parkEchart.setOption(parkOption);
-// };
-
-
 var vm=new Vue({
 	el:'#opst_parkitem',
 	data:{
@@ -141,7 +131,6 @@ var vm=new Vue({
 			var year=$("#selectyear option:selected").html();
 			var month=$("#selectmonth option:selected").html();
 			vm.datevalue=year+month;
-			console.log(vm.datevalue);
 		},
 		dayajax:function (num,day) {
             $.ajax({

@@ -220,4 +220,13 @@ public class DateUtils {
         }
         return monthlist;
     }
+
+    /**
+     * 获取当前年月格式为：201904
+     * @return
+     */
+    public static String getNowYearmonths(){
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYYMM");
+        return sdf.format(new Date());
+    }
 }

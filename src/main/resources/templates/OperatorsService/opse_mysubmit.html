@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/static/css/animate.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="/static/css/OperatorsStaff/opsthead.css"/>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/OperatorsStaff/common.js"></script>
+    <script type="text/javascript" src="/static/js/vue.js"></script>
+</head>
+
+<body class="gray-bg top-navigation">
+
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom white-bg">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                            class="navbar-toggle collapsed" type="button">
+                        <i class="fa fa-reorder"></i>
+                    </button>
+                    <a href="javascript:;" class="navbar-brand">停车场</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a aria-expanded="false" role="button" href="/service/home">首页信息</a>
+                        </li>
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
+                               data-toggle="dropdown">车位信息<span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="/service/parkstate">车位状态</a>
+                                </li>
+                                <li><a href="/service/parkitem">车位详情</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown active">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle"
+                               data-toggle="dropdown">检测维修<span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="/service/serform">提交报告</a>
+                                </li>
+                                <li class="active"><a href="javascript:;">我的提交</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <a href="#">
+                                <i></i>欢迎你，
+                                <i></i>{{userrole}}：{{username}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-out"></i>注销
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="wrapper wrapper-content" id="opse_mysubmit">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mytool">
+                        <div class="col-lg-12">
+                            <div class="col-lg-1 mt_time"><span>时间选择:</span></div>
+                            <div class="col-lg-10 mt_timechoose">
+                                <span class="systemcolor" @click="choosemonth()"><a class="fa fa-calendar-check-o">&nbsp;本月信息</a></span>
+                            </div>
+                            <div class="col-lg-10 mt_timeother">
+                                <span class="mt_tomeg">其他月份信息:</span>
+                                <select id="selectyear">
+                                    <option>2018</option>
+                                    <option selected>2019</option>
+                                </select>
+                                <select id="selectmonth">
+                                    <option>01</option>
+                                    <option>02</option>
+                                    <option selected>03</option>
+                                    <option>04</option>
+                                    <option>05</option>
+                                    <option>06</option>
+                                    <option>07</option>
+                                    <option>08</option>
+                                    <option>09</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                                <span class="mt_tosubmit nocolor" @click="choosedate()"><a class="fa fa-search"></a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <template v-if="num=='0'">
+                        <div class="col-lg-12 myinfo myinfoerror">
+                            <P class="mil_nullmeg">此时间段暂无您提交的维修报告</P>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="col-lg-12 myinfo">
+                            <div class="col-lg-8 myinfo_left">
+                                <div class="col-lg-12 mil_container">
+                                <template v-for="d in list">
+                                    <div class="col-lg-12 mil_meg borderleftgreen" @click="getOneInfo(d.deteId)">
+                                        <p class="mil_title">{{d.deteTitle}}</p>
+                                        <p class="mil_time">
+                                            <i class="fa fa-clock-o">&nbsp;&nbsp;</i>{{d.deteTime}}&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <i class="fa fa-tag">&nbsp;&nbsp;</i>{{d.deteBstate}}-->{{d.deteAtate}}
+                                        </p>
+                                    </div>
+                                </template>
+                                </div>
+                                <div class="col-lg-12 mil_page">
+                                    <ul class="pagination">
+                                        <template v-if="currentpage=='1'">
+                                            <li><a href="javascript:;" class="disabled"><span
+                                                    class="cargray">&laquo;</span></a></li>
+                                        </template>
+                                        <template v-else>
+                                            <li><a href="javascript:;" @click="turnpage(currentpage-1)">&laquo;</a></li>
+                                        </template>
+
+                                        <template v-for="pagenum in num">
+                                            <template v-if="pagenum==currentpage">
+                                                <li><a href="javascript:;" class="disabled"><span class="cargreen">{{pagenum}}</span></a>
+                                                </li>
+                                            </template>
+                                            <template v-else>
+                                                <li><a href="javascript:;" @click="turnpage(pagenum)">{{pagenum}}</a>
+                                                </li>
+                                            </template>
+                                        </template>
+
+                                        <template v-if="currentpage==num">
+                                            <li><a href="javascript:;" class="disabled"><span
+                                                    class="cargray">&raquo;</span></a></li>
+                                        </template>
+                                        <template v-else>
+                                            <li><a href="javascript:;" @click="turnpage(currentpage+1)">&raquo;</a></li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 myinfo_right bordergreen" id="mydetect">
+                                <div class="col-lg-12 mir_user">
+                                    <div class="col-lg-6 mriu_month">
+                                        <p class="mriu_meg">本月提交个数</p>
+                                        <p class="mriu_num">{{monthcount}}</p>
+                                    </div>
+                                    <div class="col-lg-6 mriu_day">
+                                        <p class="mriu_meg">今天提交个数</p>
+                                        <p class="mriu_num">{{daycount}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mir_meg">
+                                    <p class="mirm_title">{{detect.deteTitle}}</p>
+                                    <p class="mirm_time"><i class="fa fa-clock-o">&nbsp;&nbsp;</i>{{detect.deteTime}}</p>
+                                    <p class="mirm_time"><i class="fa fa-tag">&nbsp;&nbsp;</i>{{detect.deteBstate}}-->{{detect.deteAtate}}</p>
+                                    <p class="mirm_content">{{detect.deteMeg}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="pull-right">
+                @ P+智慧停车场
+            </div>
+            <div>
+                <strong>Copyright</strong> LXN &copy; 2019
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/OperatorsService/opse_mysubmit.js"></script>
+

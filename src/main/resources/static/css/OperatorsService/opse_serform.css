@@ -1,0 +1,14 @@
+.red{
+	color: red;
+}
+.input-group{
+	width: 300px;
+}
+.form_title{
+	font-size: 20px;
+	text-align: center;
+	font-weight: 700;
+}
+.form_textarea{
+	width: 450px;
+}

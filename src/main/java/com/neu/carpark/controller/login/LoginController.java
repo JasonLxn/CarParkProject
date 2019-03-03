@@ -61,7 +61,7 @@ public class LoginController {
                 return ResponseBo.ok().put("nextpage",nextpage);
             }else if(rolename.equals("维修员")){
                 operatService.updateLogintime(UtilsTools.getuser().getAllId(),new Date());
-                nextpage="/loginservice";
+                nextpage="/service/home";
                 return ResponseBo.ok().put("nextpage",nextpage);
             }else if(rolename.equals("管理员")){
                 return ResponseBo.ok().put("nextpage",nextpage);

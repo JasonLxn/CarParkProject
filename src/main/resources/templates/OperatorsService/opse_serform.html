@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/css/font-awesome.css" />
+	<link rel="stylesheet" href="/static/css/animate.css" />
+	<link rel="stylesheet" href="/static/css/style.css" />
+	<link rel="stylesheet" href="/static/css/OperatorsStaff/opsthead.css" />
+	<link rel="stylesheet" href="/static/css/OperatorsService/opse_serform.css"/>
+	<link rel="stylesheet" href="/static/css/modal.css"/>
+	<script type="text/javascript" src="/static/js/jquery.min.js" ></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/static/js/plugins/validate/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/static/js/plugins/validate/messages_zh.min.js"></script>
+	<script type="text/javascript" src="/static/js/vue.js"></script>
+</head>
+
+<body class="gray-bg top-navigation">
+
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom white-bg">
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <div class="navbar-header">
+                        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                            <i class="fa fa-reorder"></i>
+                        </button>
+                        <a href="javascript:;" class="navbar-brand">停车场</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="navbar">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a aria-expanded="false" role="button" href="/service/home">首页信息</a>
+                            </li>
+                            <li class="dropdown">
+                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">车位信息<span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li><a href="/service/parkstate">车位状态</a>
+                                    </li>
+                                    <li><a href="/service/parkitem">车位详情</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">检测维修<span class="caret"></span></a>
+                                <ul role="menu" class="dropdown-menu">                                  
+                                    <li class="active"><a href="javascript:;">提交报告</a>
+                                    </li>
+                                    <li><a href="/service/mysubmit">我的提交</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-top-links navbar-right">
+                        	<li>
+                        		<a href="#">
+									<i></i>欢迎你，
+									<i></i>{{userrole}}：{{username}}
+                        		</a>
+                        	</li>
+                            <li>
+                                <a href="login.html">
+                                    <i class="fa fa-sign-out"></i>注销
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+  
+  			<div class="wrapper wrapper-content">
+  				<div class="container">
+  					<div class="row">
+  						<div class="col-lg-12" >
+  							<form class="form-horizontal" id="signupForm" ENCTYPE="multipart/form-data">
+  							<div class="form-group">
+								<p class="col-lg-12 form_title">维修报告</p>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-5 control-label"><span class="red">*</span>报告标题：</label>
+								<div class="col-lg-7" style="padding-right: 0">
+									<div class="input-group">
+										<input id="deteTitle" name="deteTitle" class="form-control" type="text">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-5 control-label"><span class="red">*</span>车位编号：</label>
+								<div class="col-lg-7" style="padding-right: 0">
+									<div class="input-group">
+										<input id="deteParkid" name="deteParkid" class="form-control" type="text">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-5 control-label">当前车位状态：</label>
+								<div class="col-lg-7" style="padding-right: 0">
+									<div class="input-group">
+										<input id="deteBstate" name="deteBstate" class="form-control dete_bstate" type="text" readonly="readonly" placeholder="(暂未填写相关车位编号)">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-5 control-label"><span class="red">*</span>修改车位状态：</label>
+								<div class="col-lg-7" style="padding-right: 0">
+									<div class="input-group">
+										<select class="form-control dete_state" name="deteAtate" id="deteAtate">
+											<option selected="selected" value="0">请选择修改后车位状态</option>
+											<option value="1">未使用</option>
+											<option value="2">使用中</option>
+											<option value="3">维修中</option>
+											<option value="4">故障中</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-5 control-label"><span class="red">*</span>详细描述：</label>
+								<div class="col-lg-7" style="padding-right: 0">
+									<textarea class="form-control form_textarea" name="deteMeg" rows="8" id="deteMeg" placeholder="请输入详细的车位维修情况..."></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-5 control-label"></label>
+								<div class="col-lg-7" style="padding-right: 0">
+									<button class="btn btn-primary" type="button" onclick="submitTip()">提交</button>
+									<button class="btn btn-default" type="reset">重置</button>
+								</div>
+							</div>
+						</form>
+  						</div>
+
+						<!-- 提示框 -->
+						<div class="modal fade" id="tipModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header header_tip">
+										<span class="glyphicon glyphicon-exclamation-sign"></span>
+										<span class="modal-title">&nbsp;提&nbsp;&nbsp;示</span>
+									</div>
+									<div class="modal-body text-center">确定提交报告？</div>
+									<div class="modal-footer text-center">
+										<a href="javascript:;" class="btn btn-default modal_btn" data-dismiss="modal">取消</a>
+										<a href="javascript:;" class="btn btn-primary modal_btn" onclick="submitForm()">确认</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--提交失败提示框-->
+						<div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header header_danger">
+										<span class="glyphicon glyphicon-exclamation-sign"></span>
+										<span class="modal-title">&nbsp;提&nbsp;&nbsp;示</span>
+									</div>
+									<div class="modal-body text-center">提交失败</div>
+									<div class="modal-footer text-center">
+										<a href="javascript:;" class="btn modal_btn danger_btn" onclick="failbtn()">确认</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 提交成功提示框 -->
+						<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header header_tip">
+										<span class="glyphicon glyphicon-exclamation-sign"></span>
+										<span class="modal-title">&nbsp;提&nbsp;&nbsp;示</span>
+									</div>
+									<div class="modal-body text-center">提交成功</div>
+									<div class="modal-footer text-center">
+										<a href="javascript:;" class="btn btn-primary modal_btn" onclick="succbtn()">确认</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+  					</div>
+  				</div>
+  			</div>
+
+
+  			
+            <div class="footer">
+                <div class="pull-right">
+                    @ P+智慧停车场
+                </div>
+                <div>
+                    <strong>Copyright</strong> LXN &copy; 2019
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+
+</html>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/OperatorsService/opse_serform.js"></script>

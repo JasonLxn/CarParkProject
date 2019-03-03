@@ -5,11 +5,21 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.neu.carpark.entity.Detect">
         <id column="dete_id" property="deteId" />
-        <result column="dete_state" property="deteState" />
-        <result column="dete_creattime" property="deteCreattime" />
-        <result column="dete_endtime" property="deteEndtime" />
-        <result column="dete_febaid" property="deteFebaid" />
+        <result column="dete_bstate" property="deteBstate" />
+        <result column="dete_atate" property="deteAtate" />
+        <result column="dete_title" property="deteTitle" />
+        <result column="dete_meg" property="deteMeg" />
+        <result column="dete_time" property="deteTime" />
+        <result column="dete_parkid" property="deteParkid" />
         <result column="dete_operid" property="deteOperid" />
     </resultMap>
+
+    <select id="getOperDetePage" resultType="detect">
+        SELECT *
+        FROM detect
+        WHERE dete_operid=#{opstid} AND
+        DATE_FORMAT(dete_time,'%Y%m')=#{date}
+        ORDER BY dete_time DESC
+    </select>
 
 </mapper>

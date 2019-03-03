@@ -35,6 +35,10 @@ public class CarparkApplicationTests {
     ParkingService parkingService;
     @Autowired
     ParkchangeService parkchangeService;
+    @Autowired
+    FeedbackService feedbackService;
+    @Autowired
+    DetectService detectService;
 
 //    @Test
 //    public void insertop() {
@@ -80,21 +84,17 @@ public class CarparkApplicationTests {
     @Test
     public void test01(){
 
-        /*获取分页数据*/
-        Page page1 = new Page(1,10);
-        page1 = parkingService.parklistPage(page1);
-        List<Parking> parkingList = page1.getRecords();
-        System.out.println(parkingList);
-        System.out.println(page1);
+//        Calendar cal=Calendar.getInstance();
+//        int month=cal.get(Calendar.MONTH);
+//        cal.set(Calendar.MONTH,month-1);
+//        String date=DateUtils.format(cal.getTime(),"YYYYMM");
+//        System.out.println(date);
+//        Page page=new Page(1,10);
+//        page=detectService.getOperDetePage(page,"4a54d41ba95544f6b28e80e6c093e8d5","201903");
+//        List<Detect> list=page.getRecords();
+//        System.out.println(list);
 
-        List<Map<String,String>> parkInfoList=parkingService.selectDateParkinfo(parkingList,"201901");
-        System.out.println(parkInfoList);
-
-//        List<String> datelist=DateUtils.getMonthList(2019,2);
-//        List<ParkTimeNum> parkTimeNumList=parkingService.getParktimenum(datelist);
-//        System.out.println(parkTimeNumList);
-//        Map<String,String> parkInfoList=parkchangeService.getDayPark("08df8d0d99164c0dbd55d3507605f263",15);
-//        System.out.println(parkInfoList);
+        System.out.println(DateUtils.getNowYearmonths());
     }
 }
 
