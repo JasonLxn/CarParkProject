@@ -85,29 +85,16 @@ public class SerServiceController {
             return ResponseBo.error();
     }
 
-
     /**
-     * 渲染维修员--我的提交的界面
+     * 维修报告列表分页信息
+     * @param currentpage 当前页码
+     * @param date 日期 格式为201904
+     * @return
      */
-    @RequestMapping("/myservice")
-    @ResponseBody
-    public ResponseBo myservice(){
-        int size=2;
-        Page page=new Page(1,size);
-        page=detectService.getOperDetePage(page,UtilsTools.getuser().getAllId(),DateUtils.getNowYearmonths());
-        List<Detect> detectList=page.getRecords();
-        int monthcount=detectService.selectCount(new EntityWrapper<Detect>().eq("dete_operid",UtilsTools.getuser().getAllId())
-                .addFilter("DATE_FORMAT(CURDATE(),'%Y%m')=DATE_FORMAT(dete_time,'%Y%m')",""));
-        int daycount=detectService.selectCount(new EntityWrapper<Detect>().eq("dete_operid",UtilsTools.getuser().getAllId())
-                .addFilter("DATE_FORMAT(CURDATE(),'%Y%m%d')=DATE_FORMAT(dete_time,'%Y%m%d')",""));
-        return ResponseBo.ok().put("list",detectList).put("monthcount",monthcount).put("daycount",daycount).put("page",page);
-    }
-
-
     @RequestMapping("/pageservice/{currentpage}/{date}")
     @ResponseBody
     public ResponseBo pageservice(@PathVariable int currentpage,@PathVariable String date){
-        int size=2;
+        int size=10;
         Page page=new Page(currentpage,size);
         page=detectService.getOperDetePage(page,UtilsTools.getuser().getAllId(),date);
         List<Detect> detectList=page.getRecords();
@@ -119,6 +106,11 @@ public class SerServiceController {
 
     }
 
+    /**
+     * 获取维修报告的详细信息
+     * @param id 主键id
+     * @return
+     */
     @RequestMapping("/onedetect/{id}")
     @ResponseBody
     public ResponseBo onedetect(@PathVariable String id){

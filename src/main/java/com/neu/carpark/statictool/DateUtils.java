@@ -207,11 +207,18 @@ public class DateUtils {
     public static List<String> getMonthList(int year,int month){
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
         Calendar cal = Calendar.getInstance();
-        cal.clear();
-        cal.set(Calendar.YEAR,year);//设置年份
-        cal.set(Calendar.MONTH, month-1);//设置月份
-        int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);//获取某月最大天数
-        cal.set(Calendar.DAY_OF_MONTH,1);
+        int lastDay;
+        //当输入的月份为当前月份时，输出日期列表截止为当前日期
+        if(month==cal.get(Calendar.MONTH)+1){
+            lastDay=cal.get(Calendar.DATE);
+            cal.set(Calendar.DAY_OF_MONTH,1);
+        }else{
+            cal.clear();
+            cal.set(Calendar.YEAR,year);//设置年份
+            cal.set(Calendar.MONTH, month-1);//设置月份
+            lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);//获取某月最大天数
+            cal.set(Calendar.DAY_OF_MONTH,1);
+        }
         List<String> monthlist=new ArrayList<>();
         monthlist.add(sdf.format(cal.getTime()));
         for(int i=1;i<lastDay;i++){

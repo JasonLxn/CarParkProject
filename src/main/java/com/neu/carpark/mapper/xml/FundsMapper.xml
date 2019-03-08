@@ -9,9 +9,41 @@
         <result column="fund_endtime" property="fundEndtime" />
         <result column="fund_paytime" property="fundPaytime" />
         <result column="fund_parktime" property="fundParktime" />
+        <result column="fund_money" property="fundMoney" />
         <result column="fund_state" property="fundState" />
         <result column="fund_parkid" property="fundParkid" />
         <result column="fund_userid" property="fundUserid" />
+        <association  property="parking" javaType="com.neu.carpark.entity.Parking">
+            <id column="park_id" property="parkId" />
+            <result column="park_num" property="parkNum" />
+            <result column="park_state" property="parkState" />
+            <result column="park_time" property="parkTime" />
+        </association>
+        <association property="users" javaType="com.neu.carpark.entity.Users">
+            <id column="user_id" property="userId" />
+            <result column="user_name" property="userName" />
+            <result column="user_sex" property="userSex" />
+            <result column="user_phone" property="userPhone" />
+            <result column="user_car" property="userCar" />
+            <result column="user_registtime" property="userRegisttime" />
+            <result column="user_logintime" property="userLogintime" />
+        </association>
     </resultMap>
+
+    <select id="getDateFundPage" resultMap="BaseResultMap">
+        SELECT *
+        FROM funds AS f,parking AS p,users AS u
+        WHERE f.fund_parkid=p.park_id AND f.fund_userid=u.user_id AND
+		f.fund_state=#{state} AND
+		DATE_FORMAT(f.fund_creattime,#{format})=#{date}
+    </select>
+
+    <select id="getFundMoneysum" resultType="java.util.HashMap">
+        SELECT DATE_FORMAT(fund_creattime,'%Y-%m-%d') AS time,SUM(fund_money) AS money
+        FROM funds
+        WHERE DATE_FORMAT(fund_paytime,#{format})=#{date}
+        GROUP BY time
+        ORDER BY time ASC
+    </select>
 
 </mapper>

@@ -42,6 +42,53 @@ var controlchoose = {
 	}
 };
 
+//根据时间自动填充select标签的年月
+var selectedDate={
+    selectedYear:function(){
+        var nowdate=new Date();
+        var nowyear=nowdate.getFullYear();
+        var nowmonth=nowdate.getMonth()+1;
+        var yearoption;
+        for(var i=2018;i<=nowyear;i++){
+            if(i==nowyear){
+                yearoption="<option selected>"+i+"</option>";
+            }else{
+                yearoption="<option>"+i+"</option>"
+            }
+            $("#selectyear").append(yearoption);
+        }
+        this.selectMonth();
+    },
+    selectMonth:function(){
+        $("#selectmonth").empty();
+        var nowdate=new Date();
+        var nowyear=nowdate.getFullYear();
+        var nowmonth=nowdate.getMonth()+1;
+        var selectyear=$("#selectyear option:selected").html();
+        var monthlen;
+        var monthoption;
+        if(selectyear==nowyear){
+            monthlen=nowmonth;
+        }else{
+            monthlen=12;
+        }
+        for(var i=1;i<=monthlen;i++){
+        	var num;
+        	if(i<10){
+                num='0'+i;
+			} else{
+        		num=i;
+			}
+
+            if(i==nowmonth&&selectyear==nowyear){
+                monthoption="<option selected>"+num+"</option>";
+            }else{
+                monthoption="<option>"+num+"</option>"
+            }
+            $("#selectmonth").append(monthoption);
+        }
+    }
+};
 
 $(function() {
 	controlchoose.timechoose();
@@ -49,4 +96,9 @@ $(function() {
 	controlchoose.statechoose();
 	controlchoose.statebuttonchoose();
 	controlchoose.hidechart();
+    selectedDate.selectedYear();
+    $("#selectyear").change(function(){
+        console.log("123");
+        selectedDate.selectMonth();
+    })
 });

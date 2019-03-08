@@ -39,23 +39,25 @@ public class CarparkApplicationTests {
     FeedbackService feedbackService;
     @Autowired
     DetectService detectService;
+    @Autowired
+    FundsService fundsService;
 
-//    @Test
-//    public void insertop() {
+    @Test
+    public void insertop() {
 //        String uuid= UtilsTools.uuid();
 //        Operat operat=new Operat();
 //        operat.setOperId(uuid);
-//        operat.setOperWorknum("B000001");
-//        operat.setOperName("李四");
+//        operat.setOperWorknum("admin");
+//        operat.setOperName("admin");
 //        operat.setOperSex("男");
 //        operat.setOperPhone("17812345678");
-//        operat.setOperPosition("维修员");
+//        operat.setOperPosition("管理员");
 //        operat.setOperRegisttime(new Date());
 //        operat.setOperLogintime(new Date());
 //        Alluser alluser=new Alluser();
 //        alluser.setAllId(uuid);
 //        alluser.setAllPwd("123456");
-//        alluser.setAllAccount("B000001");
+//        alluser.setAllAccount("admin");
 //        alluser.setAllState("1");
 //        alluserService.encryptionPwd(alluser);
 //        alluserService.insert(alluser);
@@ -64,8 +66,8 @@ public class CarparkApplicationTests {
 //        userrole.setUrAllid(uuid);
 //        userrole.setUrRoid(roleService.selectOne(new EntityWrapper<Role>().eq("ro_name", operatService.selectById(uuid).getOperPosition())).getRoId());
 //        userroleService.insert(userrole);
-//
-//    }
+
+    }
 
 //    @Test
 //    public void test(){
@@ -86,15 +88,40 @@ public class CarparkApplicationTests {
 
 //        Calendar cal=Calendar.getInstance();
 //        int month=cal.get(Calendar.MONTH);
+//        int day=cal.get(Calendar.DATE);
 //        cal.set(Calendar.MONTH,month-1);
 //        String date=DateUtils.format(cal.getTime(),"YYYYMM");
 //        System.out.println(date);
-//        Page page=new Page(1,10);
-//        page=detectService.getOperDetePage(page,"4a54d41ba95544f6b28e80e6c093e8d5","201903");
-//        List<Detect> list=page.getRecords();
-//        System.out.println(list);
 
-        System.out.println(DateUtils.getNowYearmonths());
+//        SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
+//        String format="%Y%m%d";
+//        Page page=new Page(1,10);
+//        page=fundsService.getDateFundPage(page,format,"已支付",sdf.format(new Date()));
+//        List<Funds> list=page.getRecords();
+//        System.out.println(list);
+//        List<Map<String, String>> list=fundsService.getFundMoneysum("%Y%m","201902");
+//        List<String> monthlist=DateUtils.getMonthList(2019,2);
+//        List<String> moneylist=new ArrayList<>();
+//        Map<String, String> map=new HashMap<>();
+//        int count=0;
+//        int listlenght=list.size();
+//        for (String s:monthlist) {
+//            for (int i=0;i<listlenght;i++) {
+//                if(list.get(i).get("time").equals(s)){
+//                    moneylist.add(list.get(i).get("money"));
+//                    list.remove(i);
+//                    listlenght=list.size();
+//                    count++;
+//                    continue;
+//                }
+//            }
+//            if(count==0){
+//                moneylist.add("0");
+//            }
+//            else
+//                count=0;
+//        }
+        System.out.println(Integer.valueOf("01"));
     }
 }
 

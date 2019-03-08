@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author lxn123
- * @since 2019-01-29
+ * @since 2019-03-04
  */
 public class Users implements Serializable {
 
@@ -25,6 +25,8 @@ public class Users implements Serializable {
     private String userSex;
     @TableField("user_phone")
     private String userPhone;
+    @TableField("user_car")
+    private String userCar;
     @TableField("user_registtime")
     private Date userRegisttime;
     @TableField("user_logintime")
@@ -63,6 +65,14 @@ public class Users implements Serializable {
         this.userPhone = userPhone;
     }
 
+    public String getUserCar() {
+        return userCar;
+    }
+
+    public void setUserCar(String userCar) {
+        this.userCar = userCar;
+    }
+
     public Date getUserRegisttime() {
         return userRegisttime;
     }
@@ -86,6 +96,7 @@ public class Users implements Serializable {
         ", userName=" + userName +
         ", userSex=" + userSex +
         ", userPhone=" + userPhone +
+        ", userCar=" + userCar +
         ", userRegisttime=" + userRegisttime +
         ", userLogintime=" + userLogintime +
         "}";

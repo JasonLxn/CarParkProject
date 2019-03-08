@@ -55,15 +55,15 @@ public class LoginController {
             subject.login(token);
             //获取用户类型
             String rolename=alluserService.getUserRolename(UtilsTools.getuser());
+            operatService.updateLogintime(UtilsTools.getuser().getAllId(),new Date());
             if(rolename.equals("运营员")){
-                operatService.updateLogintime(UtilsTools.getuser().getAllId(),new Date());
                 nextpage="/staff/home";
                 return ResponseBo.ok().put("nextpage",nextpage);
             }else if(rolename.equals("维修员")){
-                operatService.updateLogintime(UtilsTools.getuser().getAllId(),new Date());
                 nextpage="/service/home";
                 return ResponseBo.ok().put("nextpage",nextpage);
             }else if(rolename.equals("管理员")){
+                nextpage="/admin/home";
                 return ResponseBo.ok().put("nextpage",nextpage);
             }
             return ResponseBo.ok().put("nextpage",nextpage);

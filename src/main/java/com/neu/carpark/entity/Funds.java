@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author lxn123
- * @since 2019-01-29
+ * @since 2019-03-04
  */
 public class Funds implements Serializable {
 
@@ -27,6 +27,8 @@ public class Funds implements Serializable {
     private Date fundPaytime;
     @TableField("fund_parktime")
     private Double fundParktime;
+    @TableField("fund_money")
+    private Double fundMoney;
     @TableField("fund_state")
     private String fundState;
     @TableField("fund_parkid")
@@ -34,6 +36,24 @@ public class Funds implements Serializable {
     @TableField("fund_userid")
     private String fundUserid;
 
+    private Parking parking;
+    private Users users;
+
+    public Parking getParking() {
+        return parking;
+    }
+
+    public void setParking(Parking parking) {
+        this.parking = parking;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
 
     public String getFundId() {
         return fundId;
@@ -75,6 +95,14 @@ public class Funds implements Serializable {
         this.fundParktime = fundParktime;
     }
 
+    public Double getFundMoney() {
+        return fundMoney;
+    }
+
+    public void setFundMoney(Double fundMoney) {
+        this.fundMoney = fundMoney;
+    }
+
     public String getFundState() {
         return fundState;
     }
@@ -102,14 +130,17 @@ public class Funds implements Serializable {
     @Override
     public String toString() {
         return "Funds{" +
-        "fundId=" + fundId +
-        ", fundCreattime=" + fundCreattime +
-        ", fundEndtime=" + fundEndtime +
-        ", fundPaytime=" + fundPaytime +
-        ", fundParktime=" + fundParktime +
-        ", fundState=" + fundState +
-        ", fundParkid=" + fundParkid +
-        ", fundUserid=" + fundUserid +
-        "}";
+                "fundId='" + fundId + '\'' +
+                ", fundCreattime=" + fundCreattime +
+                ", fundEndtime=" + fundEndtime +
+                ", fundPaytime=" + fundPaytime +
+                ", fundParktime=" + fundParktime +
+                ", fundMoney=" + fundMoney +
+                ", fundState='" + fundState + '\'' +
+                ", fundParkid='" + fundParkid + '\'' +
+                ", fundUserid='" + fundUserid + '\'' +
+                ", parking=" + parking +
+                ", users=" + users +
+                '}';
     }
 }
