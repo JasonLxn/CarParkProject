@@ -18,6 +18,15 @@ var labelOption = {
 
 var parkOption = {
 	color: ['#2A9D8F', '#e76f51', '#f4a261'],
+    toolbox: {
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
 	tooltip: {
 		trigger: 'axis',
 		axisPointer: {
@@ -34,7 +43,7 @@ var parkOption = {
 		data: ['使用次数', '故障次数', '维修次数'],
 		align: 'right',
 		top: 10,
-		right: 10
+		left: 20
 	},
 	xAxis: [{
 		type: 'category',
@@ -181,6 +190,9 @@ var vm=new Vue({
                     chooseEchart.setOption(parkOption);
                 }
             })
+        },
+        updateparkinfo:function (id) {
+			window.location.href='/staff/updateParkInfo/'+id;
         }
 	}
 })

@@ -1,5 +1,14 @@
 var fundOption = {
     color:['#1ab394'],
+    toolbox: {
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
     tooltip: {
         trigger: 'axis',
     },
@@ -7,7 +16,7 @@ var fundOption = {
         data:['日收益'],
         align: 'right',
 		top:10,
-        right: 20
+        left: 20
     },
     grid: {
         left: '0%',

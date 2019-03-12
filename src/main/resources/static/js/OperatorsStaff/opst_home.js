@@ -50,7 +50,7 @@ var parkOption = {
 		axisTick: {
 			show: false
 		},
-		data: ['1', '2', '3', '4', '5','6','7','8','9','10']
+		data: []
 	}],
 	yAxis: [{
 		type: 'value'
@@ -60,19 +60,19 @@ var parkOption = {
 			type: 'bar',
 			barGap: 0,
 			label: labelOption,
-			data: [320, 332, 301, 334, 390,320, 332, 301, 334, 390]
+			data: []
 		},
 		{
 			name: '故障次数',
 			type: 'bar',
 			label: labelOption,
-			data: [220, 182, 191, 234, 290,220, 182, 191, 234, 290]
+			data: []
 		},
 		{
 			name: '维修次数',
 			type: 'bar',
 			label: labelOption,
-			data: [150, 232, 201, 154, 190,150, 232, 201, 154, 190]
+			data: []
 		},
 	]
 };
@@ -107,14 +107,14 @@ var fundOption = {
     xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: []
     },
     yAxis: {
         type: 'value'
     },
     series: [{
         name:'日收益',
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: [],
         type: 'line',
         smooth: true,
         areaStyle: {}
@@ -122,9 +122,75 @@ var fundOption = {
 };
 
 
-$(function(){
-	var parkEchart=echarts.init(document.getElementById("pe_echart"));
-	parkEchart.setOption(parkOption);
-	var fundEchart=echarts.init(document.getElementById("pf_echart"));
-	fundEchart.setOption(fundOption);
-});
+var vm=new Vue({
+	el:'#common_home',
+	data:{
+        usernum:'',
+        unusernum:'',
+        errornum:'',
+        servicenum:'',
+        userCountnow:'',
+        userSpeed:'',
+        errorCountnow:'',
+        errorSpeed:'',
+        serviceCountnow:'',
+        serviceSpeed:'',
+        fundCountnow:'',
+        fundSpeed:'',
+		nowtime:'',
+		nowmonth:''
+	},
+	created:function () {
+		$.ajax({
+			url:'/common/home',
+			success:function (result) {
+				vm.usernum=result.usernum;
+				vm.unusernum=result.unusernum;
+                vm.errornum=result.errornum;
+                vm.servicenum=result.servicenum;
+                parkOption.xAxis[0].data=result.timelist;
+                parkOption.series[0].data=result.uselist;
+                parkOption.series[1].data=result.errorlist;
+                parkOption.series[2].data=result.servicelist;
+                fundOption.xAxis.data=result.timelist;
+                fundOption.series[0].data=result.moneylist;
+                vm.userCountnow=result.userCountnow;
+                vm.userSpeed=result.userSpeed;
+                vm.errorCountnow=result.errorCountnow;
+                vm.errorSpeed=result.errorSpeed;
+                vm.serviceCountnow=result.serviceCountnow;
+                vm.serviceSpeed=result.serviceSpeed;
+                vm.fundCountnow=result.fundCountnow;
+                vm.fundSpeed=result.fundCountnow;
+                var parkEchart=echarts.init(document.getElementById("pe_echart"));
+                parkEchart.setOption(parkOption);
+                var fundEchart=echarts.init(document.getElementById("pf_echart"));
+                fundEchart.setOption(fundOption);
+                vm.nowtime=vm.getNowtime();
+                vm.nowmonth=new Date().getMonth()+1;
+            }
+		});
+    },
+	methods:{
+		getNowtime:function () {
+			var hours=vm.timeFormat(new Date().getHours());
+			var min=vm.timeFormat(new Date().getMinutes());
+			return hours+':'+min;
+        },
+        timeFormat:function (value) {
+			if(value<10){
+				value='0'+value;
+			}
+			return value;
+        },
+	},
+    filters:{
+        negativeFormat:function (num) {
+			if(num<0){
+				num=num.substring(1);
+			}
+        }
+	}
+
+	
+})

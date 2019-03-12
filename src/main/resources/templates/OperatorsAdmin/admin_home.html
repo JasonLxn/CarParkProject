@@ -14,7 +14,7 @@
     <script type="text/javascript" src="/static/js/jquery.min.js" ></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js" ></script>
     <script type="text/javascript" src="/static/js/echarts.js" ></script>
-    <script type="text/javascript" src="/static/js/OperatorsStaff/opst_home.js" ></script>
+    <script type="text/javascript" src="/static/js/vue.js" ></script>
 </head>
 
 <body class="gray-bg top-navigation">
@@ -58,8 +58,8 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
                             <a href="#">
-                                <i></i>你好
-                                <i></i>A00123456
+                                <i></i>欢迎你，
+                                <i></i>{{userrole}}：{{username}}
                             </a>
                         </li>
                         <li>
@@ -72,66 +72,93 @@
             </nav>
         </div>
 
-        <div class="wrapper wrapper-content">
+        <div class="wrapper wrapper-content" id="common_home">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 parknum">
                         <div class="col-lg-3 parknum_gray">
                             <span class="pnum_p">P</span>
-                            <span class="pnum_n">250</span>
+                            <span class="pnum_n">{{unusernum}}</span>
                         </div>
                         <div class="col-lg-3 parknum_green">
                             <span class="pnum_p">P</span>
-                            <span class="pnum_n">250</span>
+                            <span class="pnum_n">{{usernum}}</span>
                         </div>
                         <div class="col-lg-3 parknum_red">
                             <span class="pnum_p">P</span>
-                            <span class="pnum_n">250</span>
+                            <span class="pnum_n">{{errornum}}</span>
                         </div>
                         <div class="col-lg-3 parknum_orage">
                             <span class="pnum_p">P</span>
-                            <span class="pnum_n">250</span>
+                            <span class="pnum_n">{{servicenum}}</span>
                         </div>
                         <div class="col-lg-12 parknum_tips">
                             <span class="cargray">●&nbsp;&nbsp;未使用</span>
                             <span class="cargreen">●&nbsp;&nbsp;使用中</span>
                             <span class="carred">●&nbsp;&nbsp;故障中</span>
                             <span class="carorage">●&nbsp;&nbsp;维修中</span>
-                            <span class="cargray">(更新于22:09)</span>
+                            <span class="cargray">(更新于{{nowtime}})</span>
                         </div>
                     </div>
                     <div class="col-lg-12 parkechart">
                         <div class="col-lg-9" id="pe_echart"></div>
                         <div class="col-lg-3 pe_meg">
                             <div class="col-lg-12 pem_month">
-                                <span>12&nbsp;月</span>
+                                <span>{{nowmonth}}&nbsp;月</span>
                             </div>
                             <div class="col-lg-12 pem_user">
                                 <p class="pem_userp1">用户流量</p>
-                                <p class="pem_userp2">25685</p>
-                                <p class="pem_userp3 cargreen">
-                                    同比上月
-                                    <i class="fa fa-level-up"></i>
-                                    增长20%
-                                </p>
+                                <p class="pem_userp2">{{userCountnow}}</p>
+                                <template v-if="userSpeed>=0">
+                                    <p class="pem_userp3 cargreen">
+                                        同比上月
+                                        <i class="fa fa-level-up"></i>
+                                        增长{{userSpeed}}%
+                                    </p>
+                                </template>
+                                <template v-else>
+                                    <p class="pem_userp3 carred">
+                                        同比上月
+                                        <i class="fa fa-level-down"></i>
+                                        下降{{userSpeed|negativeFormat}}%
+                                    </p>
+                                </template>
                             </div>
                             <div class="col-lg-12 pem_user">
                                 <p class="pem_userp1">故障次数</p>
-                                <p class="pem_userp2">25685</p>
-                                <p class="pem_userp3 carred">
-                                    同比上月
-                                    <i class="fa fa-level-down"></i>
-                                    下降20%
-                                </p>
+                                <p class="pem_userp2">{{errorCountnow}}</p>
+                                <template v-if="errorSpeed>=0">
+                                    <p class="pem_userp3 cargreen">
+                                        同比上月
+                                        <i class="fa fa-level-up"></i>
+                                        增长{{errorSpeed}}%
+                                    </p>
+                                </template>
+                                <template v-else>
+                                    <p class="pem_userp3 carred">
+                                        同比上月
+                                        <i class="fa fa-level-down"></i>
+                                        下降{{errorSpeed|negativeFormat}}%
+                                    </p>
+                                </template>
                             </div>
                             <div class="col-lg-12 pem_user">
                                 <p class="pem_userp1">维修次数</p>
-                                <p class="pem_userp2">25685</p>
-                                <p class="pem_userp3 cargreen">
-                                    同比上月
-                                    <i class="fa fa-level-up"></i>
-                                    增长20%
-                                </p>
+                                <p class="pem_userp2">{{serviceCountnow}}</p>
+                                <template v-if="serviceSpeed>=0">
+                                    <p class="pem_userp3 cargreen">
+                                        同比上月
+                                        <i class="fa fa-level-up"></i>
+                                        增长{{serviceSpeed}}%
+                                    </p>
+                                </template>
+                                <template v-else>
+                                    <p class="pem_userp3 carred">
+                                        同比上月
+                                        <i class="fa fa-level-down"></i>
+                                        下降{{serviceSpeed|negativeFormat}}%
+                                    </p>
+                                </template>
                             </div>
                         </div>
                     </div>
@@ -139,16 +166,25 @@
                         <div class="col-lg-9" id="pf_echart"></div>
                         <div class="col-lg-3 pf_meg">
                             <div class="col-lg-12 pem_month">
-                                <span>12&nbsp;月</span>
+                                <span>{{nowmonth}}&nbsp;月</span>
                             </div>
                             <div class="col-lg-12 pfm">
                                 <p class="pfm_p1">月收益</p>
-                                <p class="pfm_p2">256895.23</p>
-                                <p class="pfm_p3 cargreen">
-                                    同比上月
-                                    <i class="fa fa-level-up"></i>
-                                    增长20%
-                                </p>
+                                <p class="pfm_p2">{{fundCountnow}}</p>
+                                <template v-if="fundSpeed>=0">
+                                    <p class="pem_userp3 cargreen">
+                                        同比上月
+                                        <i class="fa fa-level-up"></i>
+                                        增长{{fundSpeed}}%
+                                    </p>
+                                </template>
+                                <template v-else>
+                                    <p class="pem_userp3 carred">
+                                        同比上月
+                                        <i class="fa fa-level-down"></i>
+                                        下降{{fundSpeed|negativeFormat}}%
+                                    </p>
+                                </template>
                             </div>
                         </div>
                     </div>
@@ -171,3 +207,5 @@
 </body>
 
 </html>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/OperatorsStaff/opst_home.js" ></script>

@@ -64,7 +64,7 @@ public class ShiroConfig {
 		shiroFilterFactoryBean.setLoginUrl("/login");
 		// 登录成功后要跳转的链接
 //		shiroFilterFactoryBean.setSuccessUrl("/index");
-		// 设置无权限时跳转的 url;
+//		 设置无权限时跳转的 url;
 //		shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
 		//自定义权限拦截 Filter

@@ -9,6 +9,7 @@ import com.neu.carpark.statictool.ResponseBo;
 import com.neu.carpark.statictool.UtilsTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,30 +33,12 @@ public class JumpController {
     }
 
     /**
-     * 跳转用户反馈--反馈列表界面
-     * @return
-     */
-    @RequestMapping("/feedback")
-    public String operFeedback(){
-        return "/OperatorsStaff/opst_feedback";
-    }
-
-    /**
      * 跳转车位信息--车位详情界面
      * @return
      */
     @RequestMapping("/parkitem")
     public String operParkitem(){
         return "/OperatorsStaff/opst_parkitem";
-    }
-
-    /**
-     * 跳转用户反馈--我的提交界面
-     * @return
-     */
-    @RequestMapping("/myfeedback")
-    public String operMyFeedback(){
-        return "/OperatorsStaff/opst_myfeedback";
     }
 
     /**
@@ -68,23 +51,23 @@ public class JumpController {
     }
 
     /**
-     * 跳转检测维修--检测报告界面
+     * 编辑车位状态界面
+     * @Parm id 车位ID
      * @return
      */
-    @RequestMapping("/report")
-    public String operReport(){
-        return "/OperatorsStaff/opst_report";
+    @RequestMapping("/updateParkInfo/{id}")
+    public String parkidInfo(@PathVariable String id){
+        return "/OperatorsStaff/opst_parkform";
     }
 
     /**
-     * 跳转检测维修--维修列表界面
+     * 跳转车场管理--订单管理界面
      * @return
      */
-    @RequestMapping("/service")
-    public String operService(){
-        return "/OperatorsStaff/opst_service";
+    @RequestMapping("/fundlist")
+    public String operReport(){
+        return "/OperatorsStaff/opst_fundlist";
     }
-
     /**
      * 渲染头部用户信息
      * @return

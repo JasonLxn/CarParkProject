@@ -36,7 +36,6 @@ var vm = new Vue({
                 success: function (result) {
                     vm.info = result.parkinfomeg;
                     vm.parkId=result.parkinfomeg.parkId;
-                    console.log(vm.parkId);
                     vm.hour = new Date().getHours();
                     vm.minute = new Date().getMinutes();
                     clearTimeout(timeclean);

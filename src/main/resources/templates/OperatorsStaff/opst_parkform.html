@@ -34,23 +34,23 @@
                     <div class="navbar-collapse collapse" id="navbar">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a aria-expanded="false" role="button" href="/service/home">首页信息</a>
+                                <a aria-expanded="false" role="button" href="/staff/home">首页信息</a>
                             </li>
                             <li class="dropdown">
                                 <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">车位信息<span class="caret"></span></a>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a href="/service/parkstate">车位状态</a>
+                                    <li><a href="/staff/parkstate">车位状态</a>
                                     </li>
-                                    <li><a href="/service/parkitem">车位详情</a>
+                                    <li><a href="/staff/parkitem">车位详情</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
-                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">检测维修<span class="caret"></span></a>
+                            <li class="dropdown">
+                                <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">车场管理<span class="caret"></span></a>
                                 <ul role="menu" class="dropdown-menu">                                  
-                                    <li class="active"><a href="javascript:;">提交报告</a>
+                                    <li><a href="/staff/fundlist">订单管理</a>
                                     </li>
-                                    <li><a href="/service/mysubmit">我的提交</a>
+                                    <li><a href="">费用管理</a>
                                     </li>
                                 </ul>
                             </li>
@@ -78,21 +78,13 @@
   						<div class="col-lg-12" >
   							<form class="form-horizontal" id="signupForm" ENCTYPE="multipart/form-data">
   							<div class="form-group">
-								<p class="col-lg-12 form_title">维修报告</p>
+								<p class="col-lg-12 form_title">修改车位状态</p>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-5 control-label"><span class="red">*</span>报告标题：</label>
+								<label class="col-lg-5 control-label">车位编号：</label>
 								<div class="col-lg-7" style="padding-right: 0">
 									<div class="input-group">
-										<input id="deteTitle" name="deteTitle" class="form-control" type="text">
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-lg-5 control-label"><span class="red">*</span>车位编号：</label>
-								<div class="col-lg-7" style="padding-right: 0">
-									<div class="input-group">
-										<input id="deteParkid" name="deteParkid" class="form-control" type="text">
+										<input id="parcParkid" name="parcParkid" class="form-control parcParkid" type="text" readonly="readonly">
 									</div>
 								</div>
 							</div>
@@ -100,7 +92,7 @@
 								<label class="col-lg-5 control-label">当前车位状态：</label>
 								<div class="col-lg-7" style="padding-right: 0">
 									<div class="input-group">
-										<input id="deteBstate" name="deteBstate" class="form-control dete_bstate" type="text" readonly="readonly" placeholder="(暂未填写相关车位编号)">
+										<input id="parcBstate" name="parcBstate" class="form-control parcBstate" type="text" readonly="readonly">
 									</div>
 								</div>
 							</div>
@@ -108,7 +100,7 @@
 								<label class="col-lg-5 control-label"><span class="red">*</span>修改车位状态：</label>
 								<div class="col-lg-7" style="padding-right: 0">
 									<div class="input-group">
-										<select class="form-control dete_state" name="deteAtate" id="deteAtate">
+										<select class="form-control parcAstate" name="parcAstate" id="parcAstate">
 											<option selected="selected" value="0">请选择修改后车位状态</option>
 											<option value="1">未使用</option>
 											<option value="2">使用中</option>
@@ -119,9 +111,9 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-5 control-label"><span class="red">*</span>详细描述：</label>
+								<label class="col-lg-5 control-label">修改原因：</label>
 								<div class="col-lg-7" style="padding-right: 0">
-									<textarea class="form-control form_textarea" name="deteMeg" rows="8" id="deteMeg" placeholder="请输入详细的车位维修情况..."></textarea>
+									<textarea class="form-control form_textarea" name="parcReason" rows="8" id="parcReason" placeholder="（可不写）"></textarea>
 								</div>
 							</div>
 							<div class="form-group">
@@ -142,7 +134,7 @@
 										<span class="glyphicon glyphicon-exclamation-sign"></span>
 										<span class="modal-title">&nbsp;提&nbsp;&nbsp;示</span>
 									</div>
-									<div class="modal-body text-center">确定提交报告？</div>
+									<div class="modal-body text-center">确定修改车位状态？</div>
 									<div class="modal-footer text-center">
 										<a href="javascript:;" class="btn btn-default modal_btn" data-dismiss="modal">取消</a>
 										<a href="javascript:;" class="btn btn-primary modal_btn" onclick="submitForm()">确认</a>
@@ -159,7 +151,7 @@
 										<span class="glyphicon glyphicon-exclamation-sign"></span>
 										<span class="modal-title">&nbsp;提&nbsp;&nbsp;示</span>
 									</div>
-									<div class="modal-body text-center">提交失败</div>
+									<div class="modal-body text-center">修改失败</div>
 									<div class="modal-footer text-center">
 										<a href="javascript:;" class="btn modal_btn danger_btn" onclick="failbtn()">确认</a>
 									</div>
@@ -175,7 +167,7 @@
 										<span class="glyphicon glyphicon-exclamation-sign"></span>
 										<span class="modal-title">&nbsp;提&nbsp;&nbsp;示</span>
 									</div>
-									<div class="modal-body text-center">提交成功</div>
+									<div class="modal-body text-center">修改成功</div>
 									<div class="modal-footer text-center">
 										<a href="javascript:;" class="btn btn-primary modal_btn" onclick="succbtn()">确认</a>
 									</div>
@@ -205,4 +197,4 @@
 
 </html>
 <script type="text/javascript" src="/static/js/common.js"></script>
-<script type="text/javascript" src="/static/js/OperatorsService/opse_serform.js"></script>
+<script type="text/javascript" src="/static/js/OperatorsStaff/opst_parkform.js"></script>

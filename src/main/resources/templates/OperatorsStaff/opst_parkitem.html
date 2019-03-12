@@ -28,7 +28,7 @@
 							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
                             <i class="fa fa-reorder"></i>
                         </button>
-							<a href="/staff/home" class="navbar-brand">停车场</a>
+							<a href="javascript:;" class="navbar-brand">停车场</a>
 						</div>
 						<div class="navbar-collapse collapse" id="navbar">
 							<ul class="nav navbar-nav">
@@ -47,13 +47,11 @@
 									</ul>
 								</li>
 								<li class="dropdown">
-									<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">用户反馈<span class="caret"></span></a>
+									<a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">车场管理<span class="caret"></span></a>
 									<ul role="menu" class="dropdown-menu">
-										<li>
-											<a href="/staff/feedback">反馈列表</a>
+										<li><a href="/staff/fundlist">订单管理</a>
 										</li>
-										<li>
-											<a href="/staff/myfeedback">我的提交</a>
+										<li><a href="">费用管理</a>
 										</li>
 									</ul>
 								</li>
@@ -118,9 +116,10 @@
 									<table class="table table-bordered table-hover mytable_table">
 										<thead>
 											<tr>
-												<th>车位编号</th>
-												<th>车位状态</th>
-												<th>车位情况</th>
+												<th class="col-lg-2">车位编号</th>
+												<th class="col-lg-3">车位状态</th>
+												<th class="col-lg-3">车位情况</th>
+												<th class="col-lg-2">车位操作</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -140,8 +139,11 @@
 												</template>
 												<td>
 													<i class="fa fa-circle cargreen"></i>{{parkinfo.useNum}}
-													<i class="fa fa-circle carred"></i>{{parkinfo.errorNum}}
-													<i class="fa fa-circle carorage"></i>{{parkinfo.serviceNum}}
+													<i class="fa fa-circle carred" style="margin-left: 25px"></i>{{parkinfo.errorNum}}
+													<i class="fa fa-circle carorage" style="margin-left: 25px"></i>{{parkinfo.serviceNum}}
+												</td>
+												<td>
+													<button class="btn-primary btn-success" @click="updateparkinfo(parkinfo.parkId)"><i class="fa fa-edit"></i>编辑状态</button>
 												</td>
 											</tr>
 										</tbody>

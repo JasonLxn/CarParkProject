@@ -10,6 +10,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.neu.carpark.entity.Alluser;
+import com.neu.carpark.entity.Parkchange;
 import com.neu.carpark.entity.Parking;
 import com.neu.carpark.entity.bean.ParkTimeNum;
 import com.neu.carpark.service.AlluserService;
@@ -197,5 +198,34 @@ public class ParkcarController {
         List<Integer> errorNum=parkchangeService.geterrorNum(timelist);
         List<Integer> serviceNum=parkchangeService.getserviceNum(timelist);
         return ResponseBo.ok().put("time",timelist).put("useNum",useNum).put("errorNum",errorNum).put("serviceNum",serviceNum);
+    }
+
+    /**
+     * 修改车位状态
+     * @param parkchange
+     * @return
+     */
+    @RequestMapping("/updatepark")
+    @ResponseBody
+    public ResponseBo updatepark(Parkchange parkchange){
+        parkchange.setParcId(UtilsTools.uuid());
+        parkchange.setParcTime(new Date());
+        parkchange.setParcOperid(UtilsTools.getuser().getAllId());
+        Parking parking=parkingService.selectOne(new EntityWrapper<Parking>().eq("park_num",parkchange.getParcParkid()));
+        parkchange.setParcParkid(parking.getParkId());
+        switch (parkchange.getParcAstate()){
+            case "1":parkchange.setParcAstate("未使用");break;
+            case "2":parkchange.setParcAstate("使用中");break;
+            case "3":parkchange.setParcAstate("维修中");break;
+            case "4":parkchange.setParcAstate("故障中");break;
+        }
+        if(parkchangeService.insert(parkchange)){
+            parking.setParkState(parkchange.getParcAstate());
+            parking.setParkTime(new Date());
+            parkingService.updateById(parking);
+            return ResponseBo.ok();
+        }else{
+            return ResponseBo.error();
+        }
     }
 }

@@ -28,5 +28,18 @@ public interface FundsService extends IService<Funds> {
      */
     Page<Funds> getDateFundPage(Page<Funds> page,@Param("format")String format,@Param("state") String state, @Param("date") String date);
 
+    /**
+     * 获取每月订单中各天的金额总和
+     * @param format 时间格式 如："%Y%m"
+     * @param date 时间 如："201904"
+     * @return
+     */
     List<Map<String,String>> getFundMoneysum(@Param("format")String format, @Param("date") String date);
+
+    /**
+     * 获取月份收益的总和
+     * @param num 1表示上个月，0表示当月
+     * @return
+     */
+    double getMonthFund(@Param("num") int num);
 }

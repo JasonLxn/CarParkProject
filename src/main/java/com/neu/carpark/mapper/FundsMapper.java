@@ -22,4 +22,6 @@ public interface FundsMapper extends BaseMapper<Funds> {
     List<Funds> getDateFundPage (Pagination page,@Param("format")String format, @Param("state") String state, @Param("date") String date);
 
     List<Map<String,String>> getFundMoneysum(@Param("format")String format, @Param("date") String date);
+
+    double getMonthFund(@Param("num") int num);
 }

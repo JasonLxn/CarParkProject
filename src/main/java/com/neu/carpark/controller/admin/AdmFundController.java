@@ -67,7 +67,6 @@ public class AdmFundController {
             date=value;
             int yearval=Integer.valueOf(value.substring(0,4));
             int monthval=Integer.valueOf(value.substring(5,7));
-            System.out.println(monthval);
             monthlist= DateUtils.getMonthList(yearval,monthval);
             format="%Y-%m";
         }

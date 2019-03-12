@@ -46,4 +46,10 @@
         ORDER BY time ASC
     </select>
 
+    <select id="getMonthFund" resultType="Double">
+        SELECT SUM(fund_money)
+        FROM funds
+        WHERE DATE_FORMAT(CURDATE(),'%Y%m')-DATE_FORMAT(fund_paytime,'%Y%m')=#{num}
+    </select>
+
 </mapper>

@@ -86,42 +86,8 @@ public class CarparkApplicationTests {
     @Test
     public void test01(){
 
-//        Calendar cal=Calendar.getInstance();
-//        int month=cal.get(Calendar.MONTH);
-//        int day=cal.get(Calendar.DATE);
-//        cal.set(Calendar.MONTH,month-1);
-//        String date=DateUtils.format(cal.getTime(),"YYYYMM");
-//        System.out.println(date);
 
-//        SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMdd");
-//        String format="%Y%m%d";
-//        Page page=new Page(1,10);
-//        page=fundsService.getDateFundPage(page,format,"已支付",sdf.format(new Date()));
-//        List<Funds> list=page.getRecords();
-//        System.out.println(list);
-//        List<Map<String, String>> list=fundsService.getFundMoneysum("%Y%m","201902");
-//        List<String> monthlist=DateUtils.getMonthList(2019,2);
-//        List<String> moneylist=new ArrayList<>();
-//        Map<String, String> map=new HashMap<>();
-//        int count=0;
-//        int listlenght=list.size();
-//        for (String s:monthlist) {
-//            for (int i=0;i<listlenght;i++) {
-//                if(list.get(i).get("time").equals(s)){
-//                    moneylist.add(list.get(i).get("money"));
-//                    list.remove(i);
-//                    listlenght=list.size();
-//                    count++;
-//                    continue;
-//                }
-//            }
-//            if(count==0){
-//                moneylist.add("0");
-//            }
-//            else
-//                count=0;
-//        }
-        System.out.println(Integer.valueOf("01"));
+        System.out.println(UtilsTools.sumIncease(1.0,2.0));
     }
 }
 

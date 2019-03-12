@@ -32,4 +32,10 @@ public class FundsServiceImpl extends ServiceImpl<FundsMapper, Funds> implements
         List<Map<String, String>> list=baseMapper.getFundMoneysum(format,date);
         return list;
     }
+
+    @Override
+    public double getMonthFund(int num) {
+        double moneysum=baseMapper.getMonthFund(num);
+        return moneysum;
+    }
 }
