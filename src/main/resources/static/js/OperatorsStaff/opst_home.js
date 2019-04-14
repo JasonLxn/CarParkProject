@@ -187,10 +187,12 @@ var vm=new Vue({
     filters:{
         negativeFormat:function (num) {
 			if(num<0){
-				num=num.substring(1);
+			    console.log(num);
+			    num=Math.abs(num);
+			    console.log("==="+num);
+				// num=num.substring(1);
 			}
+			return num;
         }
 	}
-
-	
 })

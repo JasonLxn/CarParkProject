@@ -36,6 +36,7 @@ public class UtilsTools {
             speed=((nowmonth/leftmonth)-1)*100;
         }
         BigDecimal bg = new BigDecimal(speed).setScale(2, RoundingMode.UP);
+//        System.out.println(bg);
         return bg;
     }
 }

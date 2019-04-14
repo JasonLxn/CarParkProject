@@ -76,7 +76,6 @@ public class CommonController {
         //查询故障次数
         double errorCountnow=parkchangeService.selectCount(new EntityWrapper<Parkchange>().eq("parc_astate","故障中").addFilter("DATE_FORMAT(CURDATE(),'%Y%m')-DATE_FORMAT(parc_time,'%Y%m')=0",""));
         double errorCountbefore=parkchangeService.selectCount(new EntityWrapper<Parkchange>().eq("parc_astate","故障中").addFilter("DATE_FORMAT(CURDATE(),'%Y%m')-DATE_FORMAT(parc_time,'%Y%m')=1",""));
-        System.out.println(errorCountnow);
         BigDecimal errorSpeed=UtilsTools.sumIncease(errorCountnow,errorCountbefore);
 
         //查询维修次数

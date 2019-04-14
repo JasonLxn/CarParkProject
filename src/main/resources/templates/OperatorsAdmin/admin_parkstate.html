@@ -45,13 +45,13 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">订单管理<span class="caret"></span></a>
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">车场管理<span class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li>
-                                    <a href="/admin/fundlist">订单列表</a>
+                                    <a href="/admin/fundlist">订单管理</a>
                                 </li>
                                 <li>
-                                    <a href="">收费管理</a>
+                                    <a href="">用户管理</a>
                                 </li>
                             </ul>
                         </li>
@@ -118,7 +118,7 @@
                         <div class="col-lg-12">
                             <p class="carm_logo">P</p>
                             <p class="carm_carnum">车位：{{info.parkNum}}</p>
-                            <img v-if="info.parkId" :src="'/staffpark/getZing/'+info.parkId" class="carm_img"/>
+                            <!--<img v-if="info.parkId" :src="'/staffpark/getZing/'+info.parkId" class="carm_img"/>-->
                             <template v-if="info.parkState=='未使用'">
                                 <p class="carm_meg"><span>状态：</span><span>{{info.parkState}}</span></p>
                             </template>

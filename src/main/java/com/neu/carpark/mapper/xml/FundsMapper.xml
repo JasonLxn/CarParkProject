@@ -47,7 +47,7 @@
     </select>
 
     <select id="getMonthFund" resultType="Double">
-        SELECT SUM(fund_money)
+        SELECT COALESCE(SUM(fund_money), 0.00) as sum
         FROM funds
         WHERE DATE_FORMAT(CURDATE(),'%Y%m')-DATE_FORMAT(fund_paytime,'%Y%m')=#{num}
     </select>
